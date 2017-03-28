@@ -1,4 +1,25 @@
 we need to structure our project, its becoming spaghetti
 
+
+
+Daniel
+
+create a file after we create a nice structure
+generate reset code once the forgot pass is clicked and save it in the database
+
+in resetPassword.php
+we need to add some password validation when the user is resetting it
+
+
+
+
+Ola
+
+in resetPasswordForm.php
 add a forgot password form to the login with email
-line 31 in register.php Laurentiu
+
+
+Laurentiu
+
+in register.php
+line 31  seems to have a bug, we have to look at it

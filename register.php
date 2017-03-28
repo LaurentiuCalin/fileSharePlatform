@@ -7,7 +7,6 @@ include "addUserDatabase.php";
 include 'sendEmailConfirmation.php';
 include 'userIdGenerator.php';
 
-
 if (empty($_POST['username']) || empty($_POST['email']) ||
     empty($_POST['email']) || empty($_POST['emailCheck']) ||
     empty(['password']) || empty($_POST['passwordCheck'])
