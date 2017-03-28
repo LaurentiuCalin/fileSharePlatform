@@ -1,6 +1,6 @@
 <?php
 
-function addToDatabase($sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailToken){
+function addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailToken){
 
     global $mysqli;
 
@@ -17,8 +17,8 @@ function addToDatabase($sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailTok
             die("mail in use");
         }
         else{
-            $stmt = $mysqli->prepare("INSERT INTO users (username, email, password, password_salt, email_token) VALUES (?,?,?,?,?)");
-            $stmt->bind_param("sssss", $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailToken);
+            $stmt = $mysqli->prepare("INSERT INTO users (id, username, email, password, password_salt, email_token) VALUES (?,?,?,?,?,?)");
+            $stmt->bind_param("ssssss", $sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailToken);
             $stmt->execute();
             $stmt->close();
             $mysqli->close();

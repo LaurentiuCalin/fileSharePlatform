@@ -1,0 +1,4 @@
+we need to structure our project, its becoming spaghetti
+
+add a forgot password form to the login with email
+line 31 in register.php Laurentiu

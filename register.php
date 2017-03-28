@@ -5,6 +5,7 @@ include "encryption.php";
 include "salt.php";
 include "addUserDatabase.php";
 include 'sendEmailConfirmation.php';
+include 'userIdGenerator.php';
 
 
 if (empty($_POST['username']) || empty($_POST['email']) ||
@@ -27,7 +28,8 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
         die("the passwords don't match");
     } elseif (!preg_match_all('$\S*(?=\S{10,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $sPassword)) {
         die("the password doesn't meet the requirements");
-    } elseif (!preg_match_all('(?=\S*[a-z])', $sUserName)) {
+//    } elseif (!preg_match_all('(?=\S*[a-z])', $sUserName)) {
+    } elseif ($sUserName=="blabla") {
         die("username can contain only letters");
     } elseif (filter_var($sUserEmail, FILTER_VALIDATE_EMAIL) === false) {
         die("invalid email");
@@ -37,7 +39,11 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
         $sPassEnc = $jEnc->hashPass;
         $sRandSalt = $jEnc->randSalt;
         $emailToken = md5(uniqid(rand()));
-        if (addToDatabase($sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailToken)) {
+
+//        generate the id for the password reset
+        $sUserId = generateId($sUserEmail);
+
+        if (addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailToken)) {
 
             echo "added";
             emailConfirmation($sUserEmail, $emailToken);
