@@ -8,11 +8,10 @@ function updatePassword($userId, $passCode, $newPass){
 
     if ($mysqli->connect_error){
         die("Connection failed: ". $mysqli->connect_error);
-        return false;
     }else{
 //        checking if there is an userid associated with the resetCode
         $stmtCheckIdAndCode = $mysqli->prepare("SELECT EXISTS(SELECT * FROM users WHERE id = ? AND password_reset_code = ?)");
-        $stmtCheckIdAndCode->bind_param('ss', $userId, $passCode);
+        $stmtCheckIdAndCode->bind_param('is', $userId, $passCode);
         $stmtCheckIdAndCode->execute();
         $stmtCheckIdAndCode->store_result();
 
@@ -25,15 +24,14 @@ function updatePassword($userId, $passCode, $newPass){
 
             $nullPassCode = NULL;
 
-            $stmtChangePass = $mysqli->prepare("UPDATE users SET password=?, password_reset_code=?, password_salt=?");
-            $stmtChangePass->bind_param('sis', $sPassEnc, $nullPassCode, $sRandSalt);
+            $stmtChangePass = $mysqli->prepare("UPDATE users SET password=?, password_reset_code=?, password_salt=? WHERE id=?");
+            $stmtChangePass->bind_param('sisi', $sPassEnc, $nullPassCode, $sRandSalt, $userId);
             $stmtChangePass->execute();
             $stmtChangePass->store_result();
 
 
         }else{
             die("Something went wrong, please try again!");
-            return false;
         }
     }
     return true;

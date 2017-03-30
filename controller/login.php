@@ -1,9 +1,10 @@
 <?php
 
-include_once 'dbconnect.php';
-include_once 'encryption.php';
-include_once 'salt.php';
-include_once 'checkAttempts.php';
+include_once '../db/dbconnect.php';
+include_once '../functions/encryption.php';
+include_once '../functions/salt.php';
+include_once '../functions/checkAttempts.php';
+include_once '../functions/incrementLoginAttempts.php';
 
 if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
     die('email not set');
@@ -33,7 +34,7 @@ if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
                         //we have a user with that email. we check if the password matches next.
                         $inputPassword = $_POST['PasswordLogin'];
 
-                        $sPass = loginEncript($inputPassword, $sStaticSalt, $db_password_salt);
+                        $sPass = loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt);
                         if ($sPass == $db_password) {
                             //we have a succesfull login. start session etc.
                             echo "Success";

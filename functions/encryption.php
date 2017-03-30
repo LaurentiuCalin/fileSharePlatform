@@ -1,6 +1,5 @@
 <?php
 
-$var;
 
 function encrypt($sPassword, $sStaticSalt){
     $sRandSalt = base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
@@ -10,7 +9,7 @@ function encrypt($sPassword, $sStaticSalt){
     return '{"hashPass":"'.$sHashPass.'", "randSalt":"'.$sRandSalt.'"}';
 }
 
-function loginEncript($inputPassword, $sStaticSalt, $db_password_salt){
+function loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt){
 
 	$sHashPass = hash("sha256", $sStaticSalt.$inputPassword.$db_password_salt);
 

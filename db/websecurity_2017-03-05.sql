@@ -67,7 +67,7 @@ CREATE TABLE `users` (
   `password_reset_code` INT(6),
   `password_salt` varchar(256) NOT NULL,
   `email_confirmation` TINYINT(1) DEFAULT FALSE,
-  `email_token` VARCHAR(65) NOT NULL,
+  `account_activation_code` VARCHAR(65) NOT NULL,
   `created_at` datetime DEFAULT NOW(),
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)

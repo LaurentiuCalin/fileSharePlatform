@@ -1,4 +1,4 @@
-we need to structure our project, its becoming spaghetti
+
 
 
 
@@ -19,7 +19,9 @@ in resetPasswordForm.php
 add a forgot password form to the login with email
 
 
-Laurentiu
+Check if reset password matches the previous password
 
-in register.php
-line 31  seems to have a bug, we have to look at it
+send email if attempts is 5
+
+
+prevent folder navigation in the browser
