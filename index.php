@@ -153,7 +153,7 @@
                             <label class="col-sm-4 control-label" for="PasswordLogin">Password</label>
 
                             <div class="col-sm-8">
-                                <input autocomplete="off" class="form-control" id="PasswordLogin" maxlength="256" name="PasswordLogin" oncopy="return false" onpaste="return false" placeholder="Password" required="" tabindex="1" type="password" value=""> <span class="" id="PasswordLoginError"></span>
+                                <input autocomplete="off" class="form-control" id="PasswordLogin" maxlength="256" name="PasswordLogin" oncopy="return false" onpaste="return false" placeholder="Password" required="" tabindex="1" type="password" value=""> <span class="" id="confirmResetPasswordError"></span>
                             </div>
                         </div>
 
@@ -177,9 +177,9 @@
     </div>
 
     <script src="js/jquery.js" type="text/javascript">
-    </script> 
+    </script>
     <script src="js/main.js" type="text/javascript">
-    </script> 
+    </script>
     <script src="js/bootstrap.min.js">
     </script>
 </body>
