@@ -16,20 +16,29 @@ function updatePassword($userId, $passCode, $newPass){
         $stmtCheckIdAndCode->store_result();
 
         if ($stmtCheckIdAndCode->num_rows){
-//            the id and the reset code match, we can change the pass and set the reset code to null
 
-            $jEnc = json_decode(encrypt($newPass, $sStaticSalt));
-            $sPassEnc = $jEnc->hashPass;
-            $sRandSalt = $jEnc->randSalt;
+            $jNewEnc = json_decode(encrypt($newPass, $sStaticSalt));
+            $NewPassEnc = $jNewEnc->hashPass;
+            $NewRandSalt = $jNewEnc->randSalt;
 
-            $nullPassCode = NULL;
+            $stmtCheckOldPass = $mysqli->prepare("SELECT password FROM users WHERE id = ? AND password_reset_code = ?");
+            $stmtCheckIdAndCode->bind_param('is', $userId, $passCode);
+            $stmtCheckOldPass->execute();
+            $stmtCheckIdAndCode->store_result();
+            $stmtCheckOldPass->bind_result($OldPasswordEnc);
 
-            $stmtChangePass = $mysqli->prepare("UPDATE users SET password=?, password_reset_code=?, password_salt=? WHERE id=?");
-            $stmtChangePass->bind_param('sisi', $sPassEnc, $nullPassCode, $sRandSalt, $userId);
-            $stmtChangePass->execute();
-            $stmtChangePass->store_result();
+            if ($NewPassEnc != $OldPasswordEnc){
 
+                $nullPassCode = NULL;
 
+                $stmtChangePass = $mysqli->prepare("UPDATE users SET password=?, password_reset_code=?, password_salt=? WHERE id=?");
+                $stmtChangePass->bind_param('sisi', $NewPassEnc, $nullPassCode, $NewRandSalt, $userId);
+                $stmtChangePass->execute();
+                $stmtChangePass->store_result();
+            }
+            else{
+                die("Please don't use a password you used before");
+            }
         }else{
             die("Something went wrong, please try again!");
         }
