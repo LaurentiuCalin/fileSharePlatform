@@ -25,6 +25,7 @@ function updatePassword($userId, $passCode, $newPass){
 
             $nullPassCode = NULL;
 
+           //there is no need for a WHERE to select the user to be updated?
             $stmtChangePass = $mysqli->prepare("UPDATE users SET password=?, password_reset_code=?, password_salt=?");
             $stmtChangePass->bind_param('sis', $sPassEnc, $nullPassCode, $sRandSalt);
             $stmtChangePass->execute();
