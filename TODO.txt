@@ -1,4 +1,4 @@
-we need to structure our project, its becoming spaghetti
+
 
 
 
@@ -22,3 +22,6 @@ add a forgot password form to the login with email
 Check if reset password matches the previous password
 
 send email if attempts is 5
+
+
+prevent folder navigation in the browser
