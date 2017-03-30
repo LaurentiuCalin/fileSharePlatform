@@ -18,8 +18,9 @@ if (isset($_GET['userId']) && $_GET['userId'] &&
     $newPass = $_POST['newPassword'];
     $passConf = $_POST['confirmNewPassword'];
 
-//    check if the passwords match
+
     if (preg_match_all('$\S*(?=\S{10,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $newPass)) {
+        //    check if the passwords match
         if ($newPass == $passConf) {
 
             include_once('../db/dbconnect.php');

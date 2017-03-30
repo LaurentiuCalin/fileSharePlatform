@@ -100,7 +100,6 @@ function CheckResetPasswordForm(form) {
   }
 else if(form.resetPassword.value !== form.confirmResetPassword.value){
   $("#resetpassword-error-message").show();
-  $("#resetPasswordt").parent().addClass('has-error');
   $("#resetPassword").parent().addClass('has-error');
   $("#resetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
   form.resetPassword.focus();
