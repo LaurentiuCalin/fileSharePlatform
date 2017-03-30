@@ -1,3 +1,6 @@
+
+
+
 function CheckRegistrationForm(form) {
 
     if (form.username.value == "") /*username not empty */{
@@ -79,4 +82,32 @@ function CheckLoginForm(form) {
         form.PasswordLogin.focus();
         return false;
     }
+}
+
+
+function CheckResetPasswordForm(form) {
+  if(form.resetPassword.value == ""){
+    $("#resetPassword").parent().addClass('has-error');
+    $("#resetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+    form.resetPassword.focus();
+    return false;
+  }
+  if(form.confirmResetPassword.value == ""){
+    $("#confirmResetPassword").parent().addClass('has-error');
+    $("#confirmResetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+    form.confirmResetPassword.focus();
+    return false;
+  }
+else if(form.resetPassword.value !== form.confirmResetPassword.value){
+  $("#resetpassword-error-message").show();
+  $("#resetPasswordt").parent().addClass('has-error');
+  $("#resetPassword").parent().addClass('has-error');
+  $("#resetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+  form.resetPassword.focus();
+  $("#confirmResetPassword").parent().addClass('has-error');
+  $("#confirmResetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+  form.confirmResetPassword.focus();
+  return false;
+}
+
 }
