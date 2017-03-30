@@ -3,8 +3,8 @@
 $userId = $_GET['userId'];
 $passCode = $_GET['code'];
 
-// $resetPassword = $_POST['newPassword'];
-// $cofirmPassowrd = $_POST['confirmNewPassword'];
+$resetPassword = $_POST['newPassword'];
+$cofirmPassowrd = $_POST['confirmNewPassword'];
 //
 //
 // function secureInputs(){
