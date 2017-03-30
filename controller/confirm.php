@@ -2,7 +2,7 @@
 
 $account_activation_code = $_GET['et'];
 
-include_once 'dbconnect.php';
+include_once '../db/dbconnect.php';
 global $mysqli;
 
 if ($mysqli->connect_error) {
@@ -17,15 +17,15 @@ if ($mysqli->connect_error) {
 
     if ($stmt->num_rows == 1) {
         if ($email_confirmation == 0) {
-            $stmtUpdate = $mysqli->prepare("UPDATE  users  SET email_confirmation = 1 WHERE email_token = ?");
+            $stmtUpdate = $mysqli->prepare("UPDATE  users  SET email_confirmation = 1 WHERE account_activation_code = ?");
             $stmtUpdate->bind_param('s', $account_activation_code);
             $stmtUpdate->execute();
             $stmtUpdate->close();
 
-            header('location: index.php');
+            header('location: ../index.php');
             return true;
         } else {
-            die('token already in use');
+            die('account already activated');
         }
     } else {
         die('an error has occurred');

@@ -66,7 +66,7 @@
 
 
                 <div class="modal-body">
-                    <form action="register.php" autocomplete="off" class="form-horizontal" id="register-form" method="post" name="register-form" onsubmit="return CheckRegistrationForm(this);" role="form">
+                    <form action="controller/register.php" autocomplete="off" class="form-horizontal" id="register-form" method="post" name="register-form" onsubmit="return CheckRegistrationForm(this);" role="form">
                         <div class="form-group">
                             <label class="col-sm-4 control-label" for="username">Username</label>
 
@@ -139,7 +139,7 @@
 
 
                 <div class="modal-body">
-                    <form action="login.php" autocomplete="nope" class="form-horizontal" id="login-form" method="post" name="login-form" onsubmit="return CheckLoginForm(this);" role="form">
+                    <form action="controller/login.php" autocomplete="off" class="form-horizontal" id="login-form" method="post" name="login-form" onsubmit="return CheckLoginForm(this);" role="form">
                         <div class="form-group">
                             <label class="col-sm-4 control-label" for="emailLogin">Email</label>
 

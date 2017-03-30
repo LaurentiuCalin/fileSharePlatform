@@ -1,11 +1,11 @@
 <?php
 
-include "dbconnect.php";
-include "encryption.php";
-include "salt.php";
-include "addUserDatabase.php";
-include 'sendEmailConfirmation.php';
-include 'userIdGenerator.php';
+include "../db/dbconnect.php";
+include "../functions/encryption.php";
+include "../functions/salt.php";
+include "../functions/addUserDatabase.php";
+include '../functions/sendEmail/SendEmailConfirmation.php';
+include '../functions/userIdGenerator.php';
 
 if (empty($_POST['username']) || empty($_POST['email']) ||
     empty($_POST['email']) || empty($_POST['emailCheck']) ||
@@ -52,73 +52,4 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
 
     }
 }
-
-
-//
-//$bRegistration = false;
-//
-//if (ctype_alpha($sUserName)===true){
-//    echo"good job";
-//}else{
-//    header('Location: http://www.example.com/');
-//    echo "please enter a valid username";
-//    die();
-//}
-//
-////check if the passwords and the emails are the same
-//
-//if ($sUserEmailCheck == $sUserEmail && $sPasswordCheck == $sPassword){
-//
-//    $sUserEmail = filter_var($sUserEmail, FILTER_SANITIZE_EMAIL);
-//
-//    if (filter_var($sUserEmail, FILTER_VALIDATE_EMAIL) === true){
-//
-//    }
-//
-//    $sPassword = mysql_real_escape_string($sPassword);
-//}
-//
-//
-//
-//
-//
-//if (!filter_var($sUserEmail, FILTER_SANITIZE_EMAIL) === false){
-//
-////    var_dump($sUserEmail);
-//}
-//
-//
-//
-//
-//
-//if ($mysqli->connect_error){
-//    die("Connection error".$mysqli->connect_error);
-//}
-////echo $mysqli;
-////echo "Conected succesfully";,
-//
-
-
-//$iv = mcrypt_create_iv(mcrypt_get_iv_size('tripledes', 'cbc'), MCRYPT_DEV_URANDOM);
-//$secretKey = base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
-
-
-//$sPasswordEnc = base64_encode(mcrypt_encrypt('tripledes', $secretKey, $sPassword, 'cbc', $iv));
-//echo $iv;
-//
-//echo "<br>";
-//
-//echo $secretKey;
-//
-//echo "<br>";
-//
-//echo $sPasswordEnc;
-
-//$sPassword = encrypt($sPassword);
-
-
-//exit();
-//die();
-//header("Location: http://localhost:90/websecurity/");
-
 ?>

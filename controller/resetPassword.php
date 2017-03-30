@@ -11,7 +11,7 @@ if (isset($_GET['userId']) && $_GET['userId'] &&
     isset($_POST['confirmNewPassword']) && $_POST['confirmNewPassword']
 ) {
 
-    include_once('updatePassword.php');
+    include_once('../functions/updatePassword.php');
 
     $userId = $_GET['userId'];
     $passCode = $_GET['passCode'];
@@ -22,9 +22,9 @@ if (isset($_GET['userId']) && $_GET['userId'] &&
     if (preg_match_all('$\S*(?=\S{10,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $newPass)) {
         if ($newPass == $passConf) {
 
-            include_once('dbconnect.php');
-            include_once('salt.php');
-            include_once('encryption.php');
+            include_once('../db/dbconnect.php');
+            include_once('../functions/salt.php');
+            include_once('../functions/encryption.php');
 
 
             if (updatePassword($userId, $passCode, $newPass)) {

@@ -45,7 +45,7 @@ $passCode = $_GET['code'];
                                 <p>You can reset it here.</p>
                                 <p class="resetpassword-error-message" id="resetpassword-error-message"><b>Password does not match!</b></p>
                                 <div class="panel-body">
-                                    <form id="resetPasswordform" action="resetPassword.php?userId=<?php echo $userId;?>&passCode=<?php echo $passCode;?>" role="form" autocomplete="off" class="form" method="post" onsubmit="return CheckResetPasswordForm(this);">
+                                    <form id="resetPasswordform" action="controller/resetPassword.php?userId=<?php echo $userId;?>&passCode=<?php echo $passCode;?>" role="form" autocomplete="off" class="form" method="post" onsubmit="return CheckResetPasswordForm(this);">
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <input id="resetPassword" type="password" name="newPassword" placeholder="New password" class="form-control" onpaste="return false" autocomplete="off" for="resetPassword" value="">
