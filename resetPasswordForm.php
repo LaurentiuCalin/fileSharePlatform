@@ -1,28 +1,3 @@
-<?php
-
-$userId = $_GET['userId'];
-$passCode = $_GET['code'];
-
-<<<<<<< HEAD
-// $resetPassword = $_POST['newPassword'];
-// $cofirmPassowrd = $_POST['confirmNewPassword'];
-=======
-$resetPassword = $_POST['newPassword'];
-$cofirmPassowrd = $_POST['confirmNewPassword'];
->>>>>>> front-end-reset-password
-//
-//
-// function secureInputs(){
-// if ($resetPassword.value == " " ) {
-// echo ("fill out the form");
-// }else {
-//   echo("fine")
-// }
-// }
-
-?>
-
-
     <!DOCTYPE html>
     <html lang="en">
 
