@@ -66,7 +66,7 @@
 
 
                 <div class="modal-body">
-                    <form action="register.php" autocomplete="nope" class="form-horizontal" id="register-form" method="post" name="register-form" onsubmit="return CheckRegistrationForm(this);" role="form">
+                    <form action="register.php" autocomplete="off" class="form-horizontal" id="register-form" method="post" name="register-form" onsubmit="return CheckRegistrationForm(this);" role="form">
                         <div class="form-group">
                             <label class="col-sm-4 control-label" for="username">Username</label>
 

@@ -17,9 +17,3 @@ Ola
 
 in resetPasswordForm.php
 add a forgot password form to the login with email
-
-
-Laurentiu
-
-in register.php
-line 31  seems to have a bug, we have to look at it
