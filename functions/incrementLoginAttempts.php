@@ -16,7 +16,7 @@ function addToAttempts($email)
         $stmtInc->close();
 
         if ($attempts == 5) {
-            //send reactivation email
+            
         }
     } else {
         $stmtCreate = $mysqli->prepare("INSERT INTO login_attempts (email, last_attempt, attempts) VALUES (?,NOW(),1)");

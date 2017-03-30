@@ -10,7 +10,7 @@ generate reset code once the forgot pass is clicked and save it in the database
 in resetPassword.php
 we need to add some password validation when the user is resetting it
 
-
+updatePassword check password match with old random salt
 
 
 Ola
