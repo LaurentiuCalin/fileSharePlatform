@@ -1,3 +1,4 @@
+
 .bg {
   background: red;
   position: absolute;
@@ -53,9 +54,36 @@
   text-align: center;
 }
 
+
+
 @media (max-width: 768px) {
 
   .features {
     margin: 70px 10px 30px;
   }
+}
+
+
+/*Reset Password Form*/
+
+.resetpassword-error-message{
+display: none;
+font-weight: bold;
+margin-bottom:-5px;
+}
+.body-reset-password{
+background-color: white;
+}
+
+.panel {
+    margin-top: 120px;
+    border:1px solid rgba(0,0,0,0.2);
+    border-radius: 0px;
+    -webkit-box-shadow: 0px;
+    box-shadow: 0px;
+    color:black;
+}
+.form-control{
+  border-radius: 0px;
+  margin-top:5px;
 }
