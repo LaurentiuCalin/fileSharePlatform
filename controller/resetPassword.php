@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 //echo $_GET['userId']."<br> ". $_GET['passcode']  ."<br>".$_POST['newpassword'];
 //here we check the fields and add the new password in the database
 
@@ -29,19 +30,27 @@ if (isset($_GET['userId']) && $_GET['userId'] &&
 
 
             if (updatePassword($userId, $passCode, $newPass)) {
-                die("password succesfully changed!");
+                header("Location:../successfulpassreset.php");
+                die();
             } else {
-                die("something went wrong! Please try again");
+              $_SESSION['error'] = "Something went wrong! Please try again";
+              header("Location: resetPasswordForm.php?userId=".$userId."&code=".$passCode."");
+                die();
             }
-
         } else {
-            die("Confirmation password does not match");
+          $_SESSION['error'] = "Confirmation password does not match";
+          header("Location: resetPasswordForm.php?userId=".$userId."&code=".$passCode."");
+            die();
         }
     } else {
-        die("the password doesn't meet the requirements");
+      $_SESSION['error'] = "The password doesn't meet the requirements";
+      header("Location: resetPasswordForm.php?userId=".$userId."&code=".$passCode."");
+        die();
     }
 } else {
-    die("Something went wrong! Please try again!");
+  $_SESSION['error'] = "Both fields are required!";
+  header("Location: resetPasswordForm.php?userId=".$_GET['userId']."&code=".$_GET['passCode']."");
+    die();
 }
 
 

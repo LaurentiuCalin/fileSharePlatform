@@ -1,5 +1,5 @@
 
-
+$("#resetpassword-error-message").hide();
 
 function CheckRegistrationForm(form) {
 
@@ -109,4 +109,15 @@ else if(form.resetPassword.value !== form.confirmResetPassword.value){
   return false;
 }
 
+
 }
+
+  $("#resetPassword").click(function(){
+    $("#resetpassword-error-message").hide();
+    $("#resetPassword").parent().removeClass('has-error');
+    $("#confirmResetPassword").parent().removeClass('has-error');
+    $("#resetPasswordError").removeClass('glyphicon glyphicon-remove form-control-feedback');
+    $("#resetPassword").val("");
+    $("#confirmResetPassword").val("");
+
+  });

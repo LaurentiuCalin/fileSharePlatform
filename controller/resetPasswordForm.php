@@ -1,9 +1,17 @@
 <?php
+session_start();
+
 $userId = $_GET['userId'];
 $passCode = $_GET['code'];
 
 $userId = htmlentities($userId);
 $passCode = htmlentities($passCode);
+$error = "";
+
+if (isset($_SESSION['error'])) {
+  $error = $_SESSION['error'];
+  unset($_SESSION['error']);
+}
 
 ?>
 <!DOCTYPE html>
@@ -22,6 +30,7 @@ $passCode = htmlentities($passCode);
 </head>
 
 <body class="body-reset-password">
+
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -30,7 +39,10 @@ $passCode = htmlentities($passCode);
                     <div class="text-center">
                         <h3><i class="fa fa-lock fa-4x"></i></h3>
                         <h2 class="text-center">Forgot your Password?</h2>
-                        <p>You can reset it here.</p>
+                        <p>You can reset it here. </p>
+                        <p id="myError" style="color:red;">
+                          <?php echo $error; ?>
+                        </p>
                         <p class="resetpassword-error-message" id="resetpassword-error-message"><b>Password does not
                                 match!</b></p>
                         <div class="panel-body">
@@ -63,8 +75,8 @@ $passCode = htmlentities($passCode);
             </div>
         </div>
     </div>
-    <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/main.js" type="text/javascript"></script>
 
 </body>
 
