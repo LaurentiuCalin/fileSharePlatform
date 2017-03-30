@@ -27,8 +27,7 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
         die("the passwords don't match");
     } elseif (!preg_match_all('$\S*(?=\S{10,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $sPassword)) {
         die("the password doesn't meet the requirements");
-//    } elseif (!preg_match_all('(?=\S*[a-z])', $sUserName)) {
-    } elseif ($sUserName=="blabla") {
+    } elseif (!preg_match_all('/(?=\S*[a-z])/', $sUserName)) {
         die("username can contain only letters");
     } elseif (filter_var($sUserEmail, FILTER_VALIDATE_EMAIL) === false) {
         die("invalid email");
@@ -37,15 +36,15 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
 
         $sPassEnc = $jEnc->hashPass;
         $sRandSalt = $jEnc->randSalt;
-        $emailToken = md5(uniqid(rand()));
+        $account_activation_code = md5(uniqid(rand()));
 
 //        generate the id for the password reset
         $sUserId = generateId($sUserEmail);
 
-        if (addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $emailToken)) {
+        if (addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $account_activation_code)) {
 
             echo "added";
-            emailConfirmation($sUserEmail, $emailToken);
+            emailConfirmation($sUserEmail, $account_activation_code);
 
         } else {
             die("An error has occurred. Please try again");
