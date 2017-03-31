@@ -11,7 +11,7 @@ function updatePassword($userId, $passCode, $newPass){
     }else{
 //        checking if there is an userid associated with the resetCode
         $stmtCheckIdAndCode = $mysqli->prepare("SELECT EXISTS(SELECT * FROM users WHERE id = ? AND password_reset_code = ?)");
-        $stmtCheckIdAndCode->bind_param('is', $userId, $passCode);
+        $stmtCheckIdAndCode->bind_param('ii', $userId, $passCode);
         $stmtCheckIdAndCode->execute();
         $stmtCheckIdAndCode->store_result();
 
