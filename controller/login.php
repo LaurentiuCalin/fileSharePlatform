@@ -5,6 +5,7 @@ include_once '../functions/encryption.php';
 include_once '../functions/salt.php';
 include_once '../functions/checkAttempts.php';
 include_once '../functions/incrementLoginAttempts.php';
+include_once '../functions/sendEmail/sendEmailReset.php';
 
 if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
     die('email not set');
@@ -15,12 +16,12 @@ if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
     $inputEmail = filter_var($inputEmail, FILTER_SANITIZE_EMAIL);
     if (!filter_var($inputEmail, FILTER_VALIDATE_EMAIL) === false) {
         global $mysqli;
-        if ($stmt = $mysqli->prepare("SELECT password, password_salt, email_confirmation FROM users WHERE email = ?")) {
+        if ($stmt = $mysqli->prepare("SELECT id, password_reset_code, password, password_salt, email_confirmation FROM users WHERE email = ?")) {
 
             $stmt->bind_param('s', $inputEmail);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($db_password, $db_password_salt, $email_confirmation);
+            $stmt->bind_result($db_id, $pass_code,$db_password, $db_password_salt, $email_confirmation);
             $stmt->fetch();
 
 
@@ -29,7 +30,8 @@ if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
                     die('please confirm your email');
                 } else {
                     if (!checkAttempts($inputEmail)) {
-                        die('too many attempts');
+                        emailPasswordReset($inputEmail, $db_id, $pass_code);
+                        die('too many attempts! a passowrd reset email has been sent to your email');
                     } else {
                         //we have a user with that email. we check if the password matches next.
                         $inputPassword = $_POST['PasswordLogin'];
