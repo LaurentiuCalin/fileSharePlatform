@@ -23,7 +23,7 @@
                 <div class="panel-body">
                     <h3><center><i class="fa fa-check-circle-o fa-4x "></i></center></h3>
                   <h5 class="text-center">
-                    <b>Password was succesfully changed!</b>
+                    <b>Password was successfully changed!</b>
                   </h5>
                   <h6 class="text-center">
                     <p><a href="index.php">Now try to log in with your new password</a></p>

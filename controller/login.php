@@ -21,7 +21,7 @@ if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
             $stmt->bind_param('s', $inputEmail);
             $stmt->execute();
             $stmt->store_result();
-            $stmt->bind_result($db_id, $pass_code,$db_password, $db_password_salt, $email_confirmation);
+            $stmt->bind_result($db_id, $db_pass_code, $db_password, $db_password_salt, $email_confirmation);
             $stmt->fetch();
 
 
@@ -30,8 +30,8 @@ if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
                     die('please confirm your email');
                 } else {
                     if (!checkAttempts($inputEmail)) {
-                        emailPasswordReset($inputEmail, $db_id, $pass_code);
-                        die('too many attempts! a passowrd reset email has been sent to your email');
+                        emailPasswordReset($inputEmail, $db_id, $db_pass_code);
+                        die('too many attempts! a password reset email has been sent to your email');
                     } else {
                         //we have a user with that email. we check if the password matches next.
                         $inputPassword = $_POST['PasswordLogin'];
