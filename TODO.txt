@@ -24,3 +24,13 @@ Check if reset password matches the previous password
 
 
 prevent folder navigation in the browser
+
+
+//Login attempts
+
+we have to decide how we are handling the login attempts
+-block login after n attempts and require password reset
+-block for t time after n attempts and afterwards delete the attempts
+
+now we have a combination of the two.
+when we have five attempts we send the reset pass email but we also delete the attempts after some time
