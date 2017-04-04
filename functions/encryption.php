@@ -9,6 +9,12 @@ function encrypt($sPassword, $sStaticSalt){
     return '{"hashPass":"'.$sHashPass.'", "randSalt":"'.$sRandSalt.'"}';
 }
 
+function encryptGivenRandSalt($sPassword, $sStaticSalt, $sRandSalt){
+    $sHashPass = hash("sha256", $sStaticSalt.$sPassword.$sRandSalt);
+
+    return $sHashPass;
+}
+
 function loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt){
 
 	$sHashPass = hash("sha256", $sStaticSalt.$inputPassword.$db_password_salt);

@@ -10,29 +10,27 @@ function updatePassword($userId, $passCode, $newPass){
         die("Connection failed: ". $mysqli->connect_error);
     }else{
 //        checking if there is an userid associated with the resetCode
-        $stmtCheckIdAndCode = $mysqli->prepare("SELECT EXISTS(SELECT * FROM users WHERE id = ? AND password_reset_code = ?)");
+        $stmtCheckIdAndCode = $mysqli->prepare("SELECT password, password_salt FROM users WHERE id = ? AND password_reset_code = ?");
         $stmtCheckIdAndCode->bind_param('ii', $userId, $passCode);
         $stmtCheckIdAndCode->execute();
         $stmtCheckIdAndCode->store_result();
+        $stmtCheckIdAndCode->bind_result($oldPass, $oldSalt);
 
-        if ($stmtCheckIdAndCode->num_rows){
+        if ($stmtCheckIdAndCode->fetch()){
 
-            $jNewEnc = json_decode(encrypt($newPass, $sStaticSalt));
-            $NewPassEnc = $jNewEnc->hashPass;
-            $NewRandSalt = $jNewEnc->randSalt;
+            $newPassWOldSalt = encryptGivenRandSalt($newPass, $sStaticSalt, $oldSalt);
 
-            $stmtCheckOldPass = $mysqli->prepare("SELECT password FROM users WHERE id = ? AND password_reset_code = ?");
-            $stmtCheckIdAndCode->bind_param('is', $userId, $passCode);
-            $stmtCheckOldPass->execute();
-            $stmtCheckIdAndCode->store_result();
-            $stmtCheckOldPass->bind_result($OldPasswordEnc);
-
-            if ($NewPassEnc != $OldPasswordEnc){
+            if ($oldPass != $newPassWOldSalt){
 
                 $nullPassCode = NULL;
 
+                $jNewPassEnc = json_decode(encrypt($newPass, $sStaticSalt));
+                $newPassEnc = $jNewPassEnc->hashPass;
+                $sNewRandSalt = $jNewPassEnc->randSalt;
+
+
                 $stmtChangePass = $mysqli->prepare("UPDATE users SET password=?, password_reset_code=?, password_salt=? WHERE id=?");
-                $stmtChangePass->bind_param('sisi', $NewPassEnc, $nullPassCode, $NewRandSalt, $userId);
+                $stmtChangePass->bind_param('sisi', $newPassEnc, $nullPassCode, $sNewRandSalt, $userId);
                 $stmtChangePass->execute();
                 $stmtChangePass->store_result();
             }
