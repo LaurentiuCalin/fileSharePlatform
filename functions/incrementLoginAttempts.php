@@ -21,7 +21,6 @@ function addToAttempts($email)
         $stmtCreate->execute();
         $stmtCreate->close();
     }
-    die('username or password incorrect');
 }
 
 ?>

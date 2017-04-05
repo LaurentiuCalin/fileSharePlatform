@@ -7,58 +7,81 @@ include_once '../functions/checkAttempts.php';
 include_once '../functions/incrementLoginAttempts.php';
 include_once '../functions/sendEmail/sendEmailReset.php';
 
-if (!isset($_POST["emailLogin"]) || empty($_POST["emailLogin"])) {
-    die('email not set');
-} else if (!isset($_POST["PasswordLogin"]) || empty($_POST["PasswordLogin"])) {
-    die('password not set');
-} else {
-    $inputEmail = $_POST['emailLogin'];
-    $inputEmail = filter_var($inputEmail, FILTER_SANITIZE_EMAIL);
-    if (!filter_var($inputEmail, FILTER_VALIDATE_EMAIL) === false) {
-        global $mysqli;
-        if ($stmt = $mysqli->prepare("SELECT id, password_reset_code, password, password_salt, email_confirmation FROM users WHERE email = ?")) {
+session_start();
 
+
+if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
+    if (isset($_POST["PasswordLogin"]) && !empty($_POST["PasswordLogin"])) {
+        $inputEmail = $_POST['emailLogin'];
+        $inputEmail = filter_var($inputEmail, FILTER_SANITIZE_EMAIL);
+        if (!filter_var($inputEmail, FILTER_VALIDATE_EMAIL) === false) {
+            global $mysqli;
+            $stmt = $mysqli->prepare("SELECT id, password_reset_code, password, password_salt, email_confirmation FROM users WHERE email = ?");
             $stmt->bind_param('s', $inputEmail);
             $stmt->execute();
             $stmt->store_result();
             $stmt->bind_result($db_id, $db_pass_code, $db_password, $db_password_salt, $email_confirmation);
             $stmt->fetch();
-
-
             if ($stmt->num_rows == 1) {
-                if ($email_confirmation == 0) {
-                    die('please confirm your email');
-                } else {
-                    if (!checkAttempts($inputEmail)) {
-                        emailPasswordReset($inputEmail, $db_id, $db_pass_code);
-                        die('too many attempts! a password reset email has been sent to your email');
-                    } else {
-                        //we have a user with that email. we check if the password matches next.
+                if ($email_confirmation != 0) {
+                    if (checkAttempts($inputEmail) === true) {
                         $inputPassword = $_POST['PasswordLogin'];
-
-                        $sPass = loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt);
-                        if ($sPass == $db_password) {
-                            //we have a succesfull login. start session etc.
-                            echo "Success";
-                            return true;
+//                        $sPass = loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt);
+                        if (password_verify($sStaticSalt . $inputPassword . $db_password_salt, $db_password)) {
+                            $randomValue = md5(time() . rand() . $db_password);
+                            setcookie("aqInfo", $db_id . "." . $randomValue, strtotime('+30 days'), '/');
+                            echo "ok";
+//                            header("location: ../dashboard.php");
+                            die();
                         } else {
-                            //password is incorrect
                             addToAttempts($inputEmail);
-//                              header('location: index.php');
-                            die('username or password incorrect');
+                            $_SESSION['error'] = "incorrect email or password";
+                            header("location: ../index.php?loginModal=1");
+                            die();
+                        }
+                    } else {
+                        $jAttempts = json_decode(checkAttempts($inputEmail));
+                        if ($jAttempts->error == 3) {
+                            addToAttempts($inputEmail);
+                            $_SESSION['error'] = "Too many attempts! Wait 5 minutes!";
+                            header("location: ../index.php?loginModal=1");
+                            die();
+                        } elseif ($jAttempts->error == 5) {
+                            emailPasswordReset($inputEmail, $db_id, $db_pass_code);
+                            $_SESSION['error'] = "Too many attempts! A password reset email has been sent!";
+                            header("location: ../index.php?loginModal=1");
+                            die();
+                        } else {
+                            $_SESSION['error'] = "An error has occurred! Contact us at: bla";
+                            header("location: ../index.php?loginModal=1");
+                            die();
                         }
                     }
+                } else {
+                    $_SESSION['error'] = "please confirm your email";
+                    header("location: ../index.php?loginModal=1");
+                    die();
                 }
             } else {
-//                header('location: index.php');
-                die('incorrect email or password');
+                $_SESSION['error'] = "incorrect email or password";
+                header("location: ../index.php?loginModal=1");
+                die();
             }
+        } else {
+            $_SESSION['error'] = "incorrect email or password";
+            header("location: ../index.php?loginModal=1");
+            die();
         }
-    } else {
-//        header('location: index.php');
-        die('incorrect email or password');
-    }
 
+    } else {
+        $_SESSION['error'] = "email or password not set";
+        header("location: ../index.php?loginModal=1");
+        die();
+    }
+} else {
+    $_SESSION['error'] = "email or password not set";
+    header("location: ../index.php?loginModal=1");
+    die();
 }
 
 ?>
