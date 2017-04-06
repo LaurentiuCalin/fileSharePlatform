@@ -4,13 +4,13 @@
 function emailPasswordReset($sUserEmail, $iUserId, $iResetPassCode)
 {
 
-    $to=$sUserEmail;
-    $subject="Change your password on AirQuick ";
+    $to = $sUserEmail;
+    $subject = "Change your password on AirQuick ";
     $from = 'emailconfirmation@airquick.dk';
-    $body="In order to change your password click here: <a href='../../resetPasswordForm.php?userId=$iUserId&code=$iResetPassCode'>link</a>.";
-    $headers = "From:".$from;
+    $body = "In order to change your password click here: <a href='../../resetPasswordForm.php?userId=$iUserId&code=$iResetPassCode'>link</a>.";
+    $headers = "From:" . $from;
 
-    if (mail($to,$subject,$body,$headers)) {
+    if (mail($to, $subject, $body, $headers)) {
         echo "<div class='container'>
             <div class='row'>
                 <div class='col-md-4 col-md-offset-4'>
@@ -25,7 +25,7 @@ function emailPasswordReset($sUserEmail, $iUserId, $iResetPassCode)
                     </div>
                 </div>
             </div>";
-    }else{
+    } else {
         die("email failed");
     }
 
