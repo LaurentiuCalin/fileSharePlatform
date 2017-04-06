@@ -4,21 +4,24 @@
 function encrypt($sPassword, $sStaticSalt){
     $sRandSalt = base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM));
 
-    $sHashPass = hash("sha256", $sStaticSalt.$sPassword.$sRandSalt);
+    $sHashPass = password_hash($sStaticSalt.$sPassword.$sRandSalt, PASSWORD_BCRYPT);
 
     return '{"hashPass":"'.$sHashPass.'", "randSalt":"'.$sRandSalt.'"}';
 }
 
 function encryptGivenRandSalt($sPassword, $sStaticSalt, $sRandSalt){
-    $sHashPass = hash("sha256", $sStaticSalt.$sPassword.$sRandSalt);
+    $sHashPass = password_hash($sStaticSalt.$sPassword.$sRandSalt, PASSWORD_BCRYPT );
 
     return $sHashPass;
 }
 
-function loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt){
 
-	$sHashPass = hash("sha256", $sStaticSalt.$inputPassword.$db_password_salt);
+// not necessary. use password_verify instead
 
-	return $sHashPass;
-}
+//function loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt){
+//
+//	$sHashPass = password_hash("sha256", $sStaticSalt.$inputPassword.$db_password_salt);
+//
+//	return $sHashPass;
+//}
 ?>
