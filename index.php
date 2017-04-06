@@ -232,6 +232,8 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
       <canvas id="demo-canvas"></canvas>
       <h1 class="main-title">Air-Quick </h1>
     </div>
+  </div>
+  </div>
 <footer>
            <div class="row">
                <div class="col-lg-12">
