@@ -29,7 +29,7 @@ if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
                         $inputPassword = $_POST['PasswordLogin'];
 //                        $sPass = loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt);
                         if (password_verify($sStaticSalt . $inputPassword . $db_password_salt, $db_password)) {
-                            setcookie("aqu_id", $db_id);
+                            setcookie("aqu_id", $db_id, strtotime('+1 day'));
                             if (isset($_POST['rememberCb']) && !empty($_POST['rememberCb'])) {
                                 Cookie($db_id);
                                 echo 'cookie saved';
