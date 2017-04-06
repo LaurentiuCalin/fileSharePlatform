@@ -11,7 +11,20 @@ function emailPasswordReset($sUserEmail, $iUserId, $iResetPassCode)
     $headers = "From:".$from;
 
     if (mail($to,$subject,$body,$headers)) {
-        echo "An reset Code Is Sent To You Check You Email";
+        echo "<div class='container'>
+            <div class='row'>
+                <div class='col-md-4 col-md-offset-4'>
+                    <div class='panel panel-default-success'>
+                        <div class='panel-body'>
+                            <h3><center><i class='fa fa-check-circle-o fa-4x'></i></center></h3>
+                          <h5 class='text-center'>
+                            <b>A reset code was sent to your e-mail.</b>
+                          </h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>";
     }else{
         die("email failed");
     }
