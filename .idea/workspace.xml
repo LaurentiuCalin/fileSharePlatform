@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <list default="true" id="e59b99e3-4207-43b1-b7d9-626fe11a770a" name="Default" comment="">
+<<<<<<< HEAD
+      <change type="DELETED" beforePath="$PROJECT_DIR$/resetPasswordForm.php" afterPath="" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO.txt" afterPath="$PROJECT_DIR$/TODO.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/login.php" afterPath="$PROJECT_DIR$/controller/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/setCookie.php" afterPath="$PROJECT_DIR$/functions/setCookie.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+>>>>>>> refs/heads/login-attmpts
+    </list>
+=======
+    <list default="true" id="e59b99e3-4207-43b1-b7d9-626fe11a770a" name="Default" comment="" />
+>>>>>>> refs/heads/login-attmpts
+=======
     <list default="true" id="e59b99e3-4207-43b1-b7d9-626fe11a770a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/register.php" afterPath="$PROJECT_DIR$/controller/register.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/resetPassword.php" afterPath="$PROJECT_DIR$/controller/resetPassword.php" />
@@ -12,6 +29,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/updatePassword.php" afterPath="$PROJECT_DIR$/functions/updatePassword.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
     </list>
+>>>>>>> refs/heads/login-attmpts
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,12 +64,132 @@
     <favorites_list name="ws" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <leaf>
+      <file leaf-file-name="updatePassword.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/updatePassword.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+              <folding>
+                <marker date="1491320642104" expanded="true" signature="333:415" ph="SELECT passw... users" />
+                <marker date="1491320642104" expanded="true" signature="1094:1172" ph="UPDATE users... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userIdGenerator.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/userIdGenerator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resetPasswordForm.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/resetPasswordForm.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-647">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forgotMyPassword.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/forgotMyPassword.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-578">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dashboard.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+              <folding>
+                <marker date="1491513982376" expanded="true" signature="12004:12011" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="incrementLoginAttempts.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/incrementLoginAttempts.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+              <folding>
+                <marker date="1491464465566" expanded="true" signature="89:155" ph="SELECT attem... login_attempts" />
+                <marker date="1491464465566" expanded="true" signature="388:476" ph="UPDATE login... " />
+                <marker date="1491464465566" expanded="true" signature="632:709" ph="INSERT INTO login_attempts... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="salt.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/salt.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setCookie.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/functions/setCookie.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+              <folding>
+                <element signature="e#6#89#0#PHP" expanded="true" />
+                <marker date="1491513970561" expanded="true" signature="171:213" ph="SELECT * FRO... auth_tokens" />
+                <marker date="1491513970561" expanded="true" signature="662:737" ph="INSERT INTO auth_tokens... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+=======
+=======
+>>>>>>> refs/heads/login-attmpts
     <splitter split-orientation="horizontal" split-proportion="0.4969325">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="updatePassword.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/functions/updatePassword.php">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <state relative-caret-position="374">
+                  <caret line="43" column="25" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="25" />
+=======
+                <state relative-caret-position="935">
+                  <caret line="55" column="25" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+>>>>>>> refs/heads/login-attmpts
+                  <folding />
+=======
                 <state relative-caret-position="297">
                   <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
                   <folding>
@@ -105,6 +243,7 @@
                     <marker date="1491464465562" expanded="true" signature="91:156" ph="SELECT attem... login_attempts" />
                     <marker date="1491464465562" expanded="true" signature="517:559" ph="DELETE FROM " />
                   </folding>
+>>>>>>> refs/heads/login-attmpts
                 </state>
               </provider>
             </entry>
@@ -112,6 +251,17 @@
           <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/controller/login.php">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <state relative-caret-position="323">
+                  <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+                  <folding>
+                    <marker date="1491513024717" expanded="true" signature="746:848" ph="SELECT id, p... users" />
+                  </folding>
+=======
+                <state relative-caret-position="544">
+                  <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+=======
                 <state relative-caret-position="272">
                   <caret line="30" column="86" lean-forward="false" selection-start-line="30" selection-start-column="86" selection-end-line="30" selection-end-column="86" />
                   <folding>
@@ -126,7 +276,9 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="85">
                   <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+>>>>>>> refs/heads/login-attmpts
                   <folding />
+>>>>>>> refs/heads/login-attmpts
                 </state>
               </provider>
             </entry>
@@ -134,8 +286,17 @@
           <file leaf-file-name="resetPassword.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/controller/resetPassword.php">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <state relative-caret-position="399">
+=======
+                <state relative-caret-position="561">
+>>>>>>> refs/heads/login-attmpts
+                  <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+=======
                 <state relative-caret-position="152">
                   <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+>>>>>>> refs/heads/login-attmpts
                   <folding />
                 </state>
               </provider>
@@ -144,12 +305,31 @@
           <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.php">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <state relative-caret-position="170">
+                  <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#2745#2752#1#HTML" expanded="true" />
+                    <element signature="e#7603#7610#1#HTML" expanded="true" />
+                    <element signature="e#10592#10598#0#HTML" expanded="true" />
+                    <marker date="1491488610486" expanded="true" signature="11201:11209" ph="..." />
+=======
+                <state relative-caret-position="238">
+                  <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#3154#3161#1#HTML" expanded="true" />
+                    <element signature="e#8038#8045#1#HTML" expanded="true" />
+                    <element signature="e#11045#11051#0#HTML" expanded="true" />
+>>>>>>> refs/heads/login-attmpts
+=======
                 <state relative-caret-position="289">
                   <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
                   <folding>
                     <element signature="e#3214#3221#1#HTML" expanded="true" />
                     <element signature="e#8096#8103#1#HTML" expanded="true" />
                     <element signature="e#11144#11150#0#HTML" expanded="true" />
+>>>>>>> refs/heads/login-attmpts
                   </folding>
                 </state>
               </provider>
@@ -161,8 +341,18 @@
                 <state relative-caret-position="136">
                   <caret line="8" column="34" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
                   <folding>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                    <marker date="1490896435891" expanded="true" signature="294:330" ph="SELECT id FR... users" />
+                    <marker date="1490896435891" expanded="true" signature="603:713" ph="INSERT INTO users... " />
+=======
+                    <marker date="1491514670828" expanded="true" signature="712:1144" ph="..." />
+                    <marker date="1491514670828" expanded="true" signature="712:1148" ph="{...}" />
+>>>>>>> refs/heads/login-attmpts
+=======
                     <marker date="1491514885560" expanded="true" signature="306:342" ph="SELECT id FR... users" />
                     <marker date="1491514885560" expanded="true" signature="770:880" ph="INSERT INTO users... " />
+>>>>>>> refs/heads/login-attmpts
                   </folding>
                 </state>
               </provider>
@@ -181,11 +371,19 @@
         </leaf>
       </split-first>
       <split-second>
+<<<<<<< HEAD
+        <leaf>
+          <file leaf-file-name="encryption.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/functions/encryption.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="118">
+=======
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="encryption.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/functions/encryption.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="119">
+>>>>>>> refs/heads/login-attmpts
                   <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
                   <folding />
                 </state>
@@ -195,12 +393,30 @@
           <file leaf-file-name="setCookie.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/functions/setCookie.php">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <state relative-caret-position="203">
+                  <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+                  <folding>
+                    <element signature="e#6#89#0#PHP" expanded="true" />
+                    <marker date="1491488783139" expanded="true" signature="171:213" ph="SELECT * FRO... auth_tokens" />
+                    <marker date="1491488783139" expanded="true" signature="662:737" ph="INSERT INTO auth_tokens... " />
+=======
+                <state relative-caret-position="305">
+                  <caret line="27" column="7" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+                  <folding>
+                    <element signature="e#6#89#0#PHP" expanded="true" />
+                    <marker date="1491514507960" expanded="true" signature="171:213" ph="SELECT * FRO... auth_tokens" />
+                    <marker date="1491514507960" expanded="true" signature="662:737" ph="INSERT INTO auth_tokens... " />
+>>>>>>> refs/heads/login-attmpts
+=======
                 <state relative-caret-position="186">
                   <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="73" selection-end-line="21" selection-end-column="73" />
                   <folding>
                     <element signature="e#6#89#0#PHP" expanded="true" />
                     <marker date="1491514885516" expanded="true" signature="171:213" ph="SELECT * FRO... auth_tokens" />
                     <marker date="1491514885516" expanded="true" signature="666:741" ph="INSERT INTO auth_tokens... " />
+>>>>>>> refs/heads/login-attmpts
                   </folding>
                 </state>
               </provider>
@@ -209,6 +425,10 @@
         </leaf>
       </split-second>
     </splitter>
+<<<<<<< HEAD
+>>>>>>> refs/heads/login-attmpts
+=======
+>>>>>>> refs/heads/login-attmpts
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -520,7 +740,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="76508000" />
+=======
+    <option name="totallyTimeSpent" value="79031000" />
+>>>>>>> refs/heads/login-attmpts
+=======
+    <option name="totallyTimeSpent" value="79035000" />
+>>>>>>> refs/heads/login-attmpts
+=======
     <option name="totallyTimeSpent" value="79178000" />
+>>>>>>> refs/heads/login-attmpts
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -884,9 +1116,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/confirmEmailForPasswordReset.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/setCookie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <folding>
+            <element signature="e#6#89#0#PHP" expanded="true" />
+            <marker date="1491513970561" expanded="true" signature="171:213" ph="SELECT * FRO... auth_tokens" />
+            <marker date="1491513970561" expanded="true" signature="662:737" ph="INSERT INTO auth_tokens... " />
+          </folding>
+=======
+        <state relative-caret-position="118">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+>>>>>>> refs/heads/login-attmpts
+=======
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+=======
         <state relative-caret-position="34">
           <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+>>>>>>> refs/heads/login-attmpts
           <folding />
+>>>>>>> refs/heads/login-attmpts
         </state>
       </provider>
     </entry>
@@ -900,14 +1161,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controller/resetPassword.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="-578">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+=======
+=======
+>>>>>>> refs/heads/login-attmpts
+        <state relative-caret-position="153">
+          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <marker date="1491514670828" expanded="true" signature="712:1144" ph="..." />
+            <marker date="1491514670828" expanded="true" signature="712:1148" ph="{...}" />
+          </folding>
+<<<<<<< HEAD
+>>>>>>> refs/heads/login-attmpts
+=======
+>>>>>>> refs/heads/login-attmpts
+=======
         <state relative-caret-position="152">
           <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
           <folding />
+>>>>>>> refs/heads/login-attmpts
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/sendEmail/SendEmailConfirmation.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="340">
+          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+=======
+        <state relative-caret-position="374">
+          <caret line="43" column="25" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="25" />
+>>>>>>> refs/heads/login-attmpts
+=======
+        <state relative-caret-position="935">
+          <caret line="55" column="25" lean-forward="false" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+>>>>>>> refs/heads/login-attmpts
+          <folding />
+=======
         <state relative-caret-position="153">
           <caret line="7" column="157" lean-forward="false" selection-start-line="7" selection-start-column="157" selection-end-line="7" selection-end-column="157" />
           <folding>
@@ -918,13 +1215,37 @@
             <marker date="1491514925420" expanded="true" signature="678:981" ph="..." />
             <marker date="1491514925420" expanded="true" signature="826:949" ph="..." />
           </folding>
+>>>>>>> refs/heads/login-attmpts
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/sendEmail/sendEmailReset.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="-647">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resetPasswordForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+=======
+        <state relative-caret-position="203">
+          <caret line="23" column="18" lean-forward="false" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+=======
+        <state relative-caret-position="305">
+          <caret line="27" column="7" lean-forward="false" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+>>>>>>> refs/heads/login-attmpts
+=======
         <state relative-caret-position="255">
           <caret line="14" column="28" lean-forward="false" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+>>>>>>> refs/heads/login-attmpts
           <folding>
             <marker date="1491514925359" expanded="true" signature="461:1011" ph="..." />
             <marker date="1491514925359" expanded="true" signature="491:1011" ph="..." />
@@ -949,23 +1270,62 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/functions/updatePassword.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="544">
+          <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
+<<<<<<< HEAD
+          <folding>
+            <marker date="1491513024717" expanded="true" signature="746:848" ph="SELECT id, p... users" />
+          </folding>
+>>>>>>> refs/heads/login-attmpts
+=======
+          <folding />
+>>>>>>> refs/heads/login-attmpts
+=======
         <state relative-caret-position="297">
           <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
           <folding>
             <marker date="1491514925393" expanded="true" signature="338:420" ph="SELECT passw... users" />
             <marker date="1491514925393" expanded="true" signature="1101:1179" ph="UPDATE users... " />
           </folding>
+>>>>>>> refs/heads/login-attmpts
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="358">
+          <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+          <folding>
+            <marker date="1491513982376" expanded="true" signature="12004:12011" ph="..." />
+=======
+        <state relative-caret-position="170">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding>
+            <element signature="e#2745#2752#1#HTML" expanded="true" />
+            <element signature="e#7603#7610#1#HTML" expanded="true" />
+            <element signature="e#10592#10598#0#HTML" expanded="true" />
+            <marker date="1491488610486" expanded="true" signature="11201:11209" ph="..." />
+>>>>>>> refs/heads/login-attmpts
+=======
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#3154#3161#1#HTML" expanded="true" />
+            <element signature="e#8038#8045#1#HTML" expanded="true" />
+            <element signature="e#11045#11051#0#HTML" expanded="true" />
+>>>>>>> refs/heads/login-attmpts
+=======
         <state relative-caret-position="289">
           <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
           <folding>
             <element signature="e#3214#3221#1#HTML" expanded="true" />
             <element signature="e#8096#8103#1#HTML" expanded="true" />
             <element signature="e#11144#11150#0#HTML" expanded="true" />
+>>>>>>> refs/heads/login-attmpts
           </folding>
         </state>
       </provider>
