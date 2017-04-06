@@ -7,8 +7,9 @@ html,body{
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
+  color:black;
 
-  color:#FFFFFF !important;
+
 
 }
 .navbar-nav {
@@ -37,6 +38,7 @@ footer{
 
 .intro .large-header {
 	background-color: #282C34;
+    color:#FFFFFF;
 }
 
 
@@ -73,7 +75,7 @@ footer{
 }
 
 
-/*.jumbotron {
+.jumbotron {
   background: none;
   color:white;
 }
@@ -115,17 +117,17 @@ footer{
   margin-bottom: 0;
   border-radius: 0;
   text-align: center;
-}*/
+}
 
 
-/*
+
 @media (max-width: 768px) {
 
   .features {
     margin: 70px 10px 30px;
   }
 }
-*/
+
 
 /* BG intro*/
 
