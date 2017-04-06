@@ -68,6 +68,7 @@ CREATE TABLE `users` (
   `password_salt` varchar(256) NOT NULL,
   `email_confirmation` TINYINT(1) DEFAULT FALSE,
   `account_activation_code` VARCHAR(65) NOT NULL,
+  `pro_user` TINYINT(1) DEFAULT FALSE,
   `created_at` datetime DEFAULT NOW(),
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -86,6 +87,22 @@ CREATE TABLE `login_attempts` (
   `attempts` int(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+# Dump of table auth_tokens
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `auth_tokens`;
+
+CREATE TABLE `auth_tokens` (
+  `id` int(11) not null AUTO_INCREMENT,
+  `selector` char(12),
+  `token` char(64),
+  `userid` int(11) UNSIGNED not null,
+  `expires` int(12),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

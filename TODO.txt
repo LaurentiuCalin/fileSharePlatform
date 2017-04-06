@@ -30,6 +30,7 @@ Check if reset password matches the previous password
 ->disable allow_url_include for php in php.ini in order to block running files from remote servers
 ->disable eval()/shell_exec/exec/system
 ->set HTTPonly Cookies in php.ini
+->http://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html
 
 
 ->prevent folder navigation in the browser

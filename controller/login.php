@@ -6,6 +6,7 @@ include_once '../functions/salt.php';
 include_once '../functions/checkAttempts.php';
 include_once '../functions/incrementLoginAttempts.php';
 include_once '../functions/sendEmail/sendEmailReset.php';
+include_once '../functions/setCookie.php';
 
 session_start();
 
@@ -28,11 +29,18 @@ if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
                         $inputPassword = $_POST['PasswordLogin'];
 //                        $sPass = loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt);
                         if (password_verify($sStaticSalt . $inputPassword . $db_password_salt, $db_password)) {
-                            $randomValue = md5(time() . rand() . $db_password);
-                            setcookie("aqInfo", $db_id . "." . $randomValue, strtotime('+30 days'), '/');
+                            setcookie("aqu_id", $db_id);
+                            if (isset($_POST['rememberCb']) && !empty($_POST['rememberCb'])) {
+                                Cookie($db_id);
+                                echo 'cookie saved';
+                            } else {
+                                echo 'cookie not saved';
+
+                            }
                             echo "ok";
 //                            header("location: ../dashboard.php");
                             die();
+
                         } else {
                             addToAttempts($inputEmail);
                             $_SESSION['error'] = "incorrect email or password";
