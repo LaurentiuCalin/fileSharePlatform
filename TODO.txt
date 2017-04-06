@@ -37,3 +37,8 @@ Check if reset password matches the previous password
 ->at least 2 user types on server
     -> registration w/ read/write only
     -> login w/ read only
+
+
+
+- hide urls of everything (deep linking)
+- multi-level login with regular and pro users
