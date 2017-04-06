@@ -1,6 +1,6 @@
 <?php
 
-//if (isset($_COOKIE['aqInfo']))
+if (isset($_COOKIE['aqInfo']))
 
 session_start();
 
