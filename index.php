@@ -18,10 +18,10 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="" name="description">
-    <meta content="" name="author">
+    <meta content="" name="web-security">
+    <meta content="" name="DanielLaurentiuOla">
 
-    <title>Air Quick</title><!-- Bootstrap Core CSS -->
+    <title>Air Quick</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,9 +33,6 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 </head>
 
 <body>
-<!-- Navigation -->
-
-
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,13 +42,13 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
             <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse"
                     type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
                         class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <a class="navbar-brand" href="#">Logo</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
 
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav right">
                 <li>
                     <a data-target="#registerModal" data-toggle="modal" href="#">Register</a>
                 </li>
@@ -227,10 +224,30 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
         </div>
     </div>
 </div>
+<div class="container intro">
+  <div class="content">
+    <div id="large-header" class="large-header">
+      <canvas id="demo-canvas"></canvas>
+      <h1 class="main-title">Air-Quick </h1>
+    </div>
+<footer>
+           <div class="row">
+               <div class="col-lg-12">
+                   <p class="text-center">Copyright &copy; Air-Quick 2017</p>
+               </div>
+           </div>
+           <!-- /.row -->
+       </footer>
+
+</section>
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/TweenLite.min.js"></script>
+<script src="js/EasePack.min.js"></script>
+<script src="js/rAF.js"></script>
+<script src="js/bg.js"></script>
 <?php
 if (isset($_GET['loginModal']) && $_GET['loginModal'] == 1){ ?>
     <script type = 'text/javascript'>
