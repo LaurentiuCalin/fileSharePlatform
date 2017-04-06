@@ -71,6 +71,23 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
     <!-- /.container -->
 </nav>
 
+
+<div id="messageModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <b>Successfully Registered! In order to log in, activate your account by using the link sent to your e-mail.</b>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
 <!-- register modal -->
 <div aria-hidden="true" aria-labelledby="registerModalLabel" class="modal fade" id="registerModal" role="dialog"
      tabindex="-1">
@@ -78,6 +95,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Register</h5>
+                <p><?php echo $error; ?></p>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -125,7 +143,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="password" name="password"
-                                   placeholder="Password" tabindex="1" type="password" value=""><span class=""
+                                   placeholder="Password" tabindex="1" type="password" value="Kotek31#!aaaa"><span class=""
                                                                                                       id="passwordError"></span>
                         </div>
                     </div>
@@ -135,7 +153,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="passwordCheck" name="passwordCheck"
-                                   placeholder="Repeat password" tabindex="1" type="password" value=""><span class=""
+                                   placeholder="Repeat password" tabindex="1" type="password" value="Kotek31#!aaaa"><span class=""
                                                                                                              id="passwordCheckError"></span>
                         </div>
                     </div>
@@ -257,6 +275,18 @@ if (isset($_GET['loginModal']) && $_GET['loginModal'] == 1){ ?>
     <script type = 'text/javascript'>
         $("#LoginModal").modal('show');
     </script>
-<?php } ?>
+<?php }
+
+if (isset($_GET['registerModal']) && $_GET['registerModal'] == 1){ ?>
+    <script type = 'text/javascript'>
+        $("#registerModal").modal('show');
+    </script>
+<?php } 
+if (isset($_GET['messageModal']) && $_GET['messageModal'] == 1){ ?>
+    <script type = 'text/javascript'>
+        $("#messageModal").modal('show');
+    </script>
+
+<?php } ?> 
 </body>
 </html>
