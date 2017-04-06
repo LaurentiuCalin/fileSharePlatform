@@ -2,11 +2,11 @@
 
 if (isset($_COOKIE['aqInfo']))
 
-session_start();
+    session_start();
 
 $error = '';
 
-if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
+if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
     $error = $_SESSION['error'];
     unset($_SESSION['error']);
 }
@@ -73,19 +73,19 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
 
 <div id="messageModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <b>Successfully Registered! In order to log in, activate your account by using the link sent to your e-mail.</b>
-      </div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <b>Successfully Registered! In order to log in, activate your account by using the link sent to your
+                    e-mail.</b>
+            </div>
+
+        </div>
 
     </div>
-
-  </div>
 </div>
-
 
 
 <!-- register modal -->
@@ -143,8 +143,9 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="password" name="password"
-                                   placeholder="Password" tabindex="1" type="password" value="Kotek31#!aaaa"><span class=""
-                                                                                                      id="passwordError"></span>
+                                   placeholder="Password" tabindex="1" type="password" value="Kotek31#!aaaa"><span
+                                    class=""
+                                    id="passwordError"></span>
                         </div>
                     </div>
                     <!-- required="" minlength="10" oncopy="return false" onpaste="return false"-->
@@ -153,15 +154,17 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="passwordCheck" name="passwordCheck"
-                                   placeholder="Repeat password" tabindex="1" type="password" value="Kotek31#!aaaa"><span class=""
-                                                                                                             id="passwordCheckError"></span>
+                                   placeholder="Repeat password" tabindex="1" type="password"
+                                   value="Kotek31#!aaaa"><span class=""
+                                                               id="passwordCheckError"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">
-                                <input class="form-control btn btn-register btn-success" id="register-submit" name="register-submit"
+                                <input class="form-control btn btn-register btn-success" id="register-submit"
+                                       name="register-submit"
                                        tabindex="4" type="submit" value="Register Now">
                             </div>
                         </div>
@@ -213,7 +216,8 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="PasswordLogin" maxlength="256"
-                                   name="PasswordLogin"                                   placeholder="Password" required="" tabindex="1" type="password" value=""> <span
+                                   name="PasswordLogin" placeholder="Password" required="" tabindex="1" type="password"
+                                   value=""> <span
                                     class="" id="confirmResetPasswordError"></span>
                         </div>
                     </div>
@@ -229,7 +233,8 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">
-                                <input class="form-control btn btn-login btn-success" id="login-submit" name="login-submit"
+                                <input class="form-control btn btn-login btn-success" id="login-submit"
+                                       name="login-submit"
                                        tabindex="4" type="submit" value="Login">
                             </div>
                         </div>
@@ -245,21 +250,21 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
     </div>
 </div>
 <div class="container intro">
-  <div class="content">
-    <div id="large-header" class="large-header">
-      <canvas id="demo-canvas"></canvas>
-      <h1 class="main-title">Air-Quick </h1>
+    <div class="content">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+            <h1 class="main-title">Air-Quick </h1>
+        </div>
     </div>
-  </div>
-  </div>
+</div>
 <footer>
-           <div class="row">
-               <div class="col-lg-12">
-                   <p class="text-center">Copyright &copy; Air-Quick 2017</p>
-               </div>
-           </div>
-           <!-- /.row -->
-       </footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="text-center">Copyright &copy; Air-Quick 2017</p>
+        </div>
+    </div>
+    <!-- /.row -->
+</footer>
 
 </section>
 
@@ -271,22 +276,22 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 <script src="js/rAF.js"></script>
 <script src="js/bg.js"></script>
 <?php
-if (isset($_GET['loginModal']) && $_GET['loginModal'] == 1){ ?>
-    <script type = 'text/javascript'>
+if (isset($_GET['loginModal']) && $_GET['loginModal'] == 1) { ?>
+    <script type='text/javascript'>
         $("#LoginModal").modal('show');
     </script>
 <?php }
 
-if (isset($_GET['registerModal']) && $_GET['registerModal'] == 1){ ?>
-    <script type = 'text/javascript'>
+if (isset($_GET['registerModal']) && $_GET['registerModal'] == 1) { ?>
+    <script type='text/javascript'>
         $("#registerModal").modal('show');
     </script>
-<?php } 
-if (isset($_GET['messageModal']) && $_GET['messageModal'] == 1){ ?>
-    <script type = 'text/javascript'>
+<?php }
+if (isset($_GET['messageModal']) && $_GET['messageModal'] == 1) { ?>
+    <script type='text/javascript'>
         $("#messageModal").modal('show');
     </script>
 
-<?php } ?> 
+<?php } ?>
 </body>
 </html>

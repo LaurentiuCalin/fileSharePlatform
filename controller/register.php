@@ -12,7 +12,7 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
     empty(['password']) || empty($_POST['passwordCheck'])
 ) {
     $_SESSION['error'] = "Please fill all the fields";
-          header("Location:../index.php?registerModal=1");
+    header("Location:../index.php?registerModal=1");
     die();
 } else {
 
@@ -25,23 +25,23 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
 
     if ($sUserEmail !== $sUserEmailCheck) {
         $_SESSION['error'] = "E-mails do not match! ";
-          header("Location:../index.php?registerModal=1");
+        header("Location:../index.php?registerModal=1");
         die();
     } elseif ($sPassword !== $sPasswordCheck) {
         $_SESSION['error'] = "Passwords do not match!";
-          header("Location:../index.php?registerModal=1");
+        header("Location:../index.php?registerModal=1");
         die();
     } elseif (!preg_match_all('$\S*(?=\S{10,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $sPassword)) {
         $_SESSION['error'] = "The password does not meet the requirements";
-          header("Location:../index.php?registerModal=1");
+        header("Location:../index.php?registerModal=1");
         die();
     } elseif (!preg_match_all('/(?=\S*[a-z])/', $sUserName)) {
-         $_SESSION['error'] = "Username can contain only letters";
-          header("Location:../index.php?registerModal=1");
+        $_SESSION['error'] = "Username can contain only letters";
+        header("Location:../index.php?registerModal=1");
         die();
     } elseif (filter_var($sUserEmail, FILTER_VALIDATE_EMAIL) === false) {
-         $_SESSION['error'] = "Invalid e-mail adress";
-          header("Location:../index.php?registerModal=1");
+        $_SESSION['error'] = "Invalid e-mail adress";
+        header("Location:../index.php?registerModal=1");
         die();
     } else {
         $jEnc = json_decode(encrypt($sPasswordCheck, $sStaticSalt));
@@ -58,7 +58,7 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
             header("Location:../index.php?messageModal=1");
 
         } else {
-             $_SESSION['error'] = "An error has occurred. Please try again";
+            $_SESSION['error'] = "An error has occurred. Please try again";
             header("Location:../index.php?registerModal=1");
             die();
         }

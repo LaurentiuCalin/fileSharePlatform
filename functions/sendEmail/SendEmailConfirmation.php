@@ -2,14 +2,14 @@
 
 function emailConfirmation($sUserEmail, $emailToken)
 {
-    $to=$sUserEmail;
-    $subject="Activate your account on AirQuick ";
+    $to = $sUserEmail;
+    $subject = "Activate your account on AirQuick ";
     $from = 'emailconfirmation@airquick.dk';
-    $body='This is the activation e-mail to your AirQuick account. Please Click On This <a href="controller/confirm.php?et='.$emailToken.'">link</a>to activate your account.';
-    $headers = "From:".$from;
+    $body = 'This is the activation e-mail to your AirQuick account. Please Click On This <a href="controller/confirm.php?et=' . $emailToken . '">link</a>to activate your account.';
+    $headers = "From:" . $from;
 
-    if (mail($to,$subject,$body,$headers)) {
-      	echo "<div class='container'>
+    if (mail($to, $subject, $body, $headers)) {
+        echo "<div class='container'>
             <div class='row'>
                 <div class='col-md-4 col-md-offset-4'>
                     <div class='panel panel-default-success'>
@@ -23,10 +23,10 @@ function emailConfirmation($sUserEmail, $emailToken)
                     </div>
                 </div>
             </div>";
-    }else{
-      die("email failed");
+    } else {
+        die("email failed");
     }
 
 }
 
- ?>
+?>

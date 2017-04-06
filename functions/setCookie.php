@@ -25,10 +25,10 @@ function Cookie($id)
 
         $expires = strtotime('+30 days');
 
-    $stmt = $mysqli->prepare("INSERT INTO auth_tokens (selector, token, userid, expires) VALUES (?,?,?,?)");
-    $stmt->bind_param("ssss", $selector, $hashToken, $id, $expires);
-    $stmt->execute();
-    $stmt->close();
+        $stmt = $mysqli->prepare("INSERT INTO auth_tokens (selector, token, userid, expires) VALUES (?,?,?,?)");
+        $stmt->bind_param("ssss", $selector, $hashToken, $id, $expires);
+        $stmt->execute();
+        $stmt->close();
 
         setcookie("aqInfo", $selector . "." . $token, $expires, '/', '');
     }
