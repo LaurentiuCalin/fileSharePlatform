@@ -34,7 +34,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
     <![endif]-->
 </head>
 
-<body>
+<body class="landing-page">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->

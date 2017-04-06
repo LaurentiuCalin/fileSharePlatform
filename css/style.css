@@ -2,15 +2,15 @@
     margin: 0;
     padding: 0;
 }
-html,body{
-  background-color: #282C34;
+html{
+
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
   color:black;
-
-
-
+}
+body.landing-page{
+  background-color:#282C34;
 }
 .navbar-nav {
     float: right;
@@ -28,8 +28,7 @@ footer{
 
 .large-header {
 	position: relative;
-	width: 100%;
-	background: #333;
+	background-color:#282C34 ;
 	overflow: hidden;
 	background-size: cover;
 	background-position: center center;
@@ -38,7 +37,7 @@ footer{
 
 .intro .large-header {
 	background-color: #282C34;
-    color:#FFFFFF;
+  color:#FFFFFF;
 }
 
 
@@ -143,7 +142,7 @@ background-color: white;
 }
 
 .panel {
-    margin-top: 120px;
+    margin-top: 150px;
     border:1px solid rgba(0,0,0,0.2);
     border-radius: 0px;
     -webkit-box-shadow: 0px;
@@ -156,4 +155,8 @@ background-color: white;
 }
 .form-control-feedback{
   top: 5px;
+}
+
+.panel-default-success{
+  margin-top: 230px;
 }
