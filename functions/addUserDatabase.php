@@ -1,5 +1,4 @@
 <?php
-session_start();
 function addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $account_activation_code)
 {
 

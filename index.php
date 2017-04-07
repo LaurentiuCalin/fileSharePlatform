@@ -1,8 +1,15 @@
 <?php
 
-if (isset($_COOKIE['aqInfo']))
+session_start();
 
-    session_start();
+include_once "db/dbconnect.php";
+include_once "functions/checkLoginCookie.php";
+
+CheckLoginCookie();
+
+if (isset($_SESSION['logged']) || $_SESSION['logged'] == 1){
+    header("Location:dashboard.php");
+}
 
 $error = '';
 

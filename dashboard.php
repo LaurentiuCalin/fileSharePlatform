@@ -2,6 +2,16 @@
 
 session_start();
 
+include_once "db/dbconnect.php";
+include_once "functions/checkLoginCookie.php";
+
+CheckLoginCookie();
+
+if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1){
+    $_SESSION['error'] = "Please login to view this page";
+    header("Location:index.php?loginModal=1");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +47,7 @@ session_start();
         <div class="navbar-header">
             <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse"
                     type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+                        class="icon-bar"></span> <span class="icon-bar"></span></button>
             <a class="navbar-brand" href="#">Start Bootstrap</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,14 +56,8 @@ session_start();
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a data-target="#registerModal" data-toggle="modal" href="#">Register</a>
+                    <a href="functions/logout.php">Logout</a>
                 </li>
-
-
-                <li>
-                    <a data-target="#LoginModal" data-toggle="modal" href="#">Login</a>
-                </li>
-
 
                 <li>
                     <a href="#">Contact</a>

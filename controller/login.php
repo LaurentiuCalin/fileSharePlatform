@@ -29,16 +29,13 @@ if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
                         $inputPassword = $_POST['PasswordLogin'];
 //                        $sPass = loginEncrypt($inputPassword, $sStaticSalt, $db_password_salt);
                         if (password_verify($sStaticSalt . $inputPassword . $db_password_salt, $db_password)) {
-                            setcookie("aqu_id", $db_id, strtotime('+1 day'));
                             if (isset($_POST['rememberCb']) && !empty($_POST['rememberCb'])) {
                                 Cookie($db_id);
-                                echo 'cookie saved';
-                            } else {
-                                echo 'cookie not saved';
-
                             }
-                            echo "ok";
-//                            header("location: ../dashboard.php");
+                            $_SESSION['logged'] = 1;
+                            $_SESSION['user'] = $db_id;
+
+                            header("location: ../dashboard.php");
                             die();
 
                         } else {
@@ -48,30 +45,25 @@ if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
                             die();
                         }
                     } else {
-                        $jAttempts = json_decode(checkAttempts($inputEmail));
-                        if ($jAttempts->error == 3) {
-                            addToAttempts($inputEmail);
-                            $_SESSION['error'] = "Too many attempts! Wait 5 minutes!";
-                            header("location: ../index.php?loginModal=1");
-                            die();
-                        } elseif ($jAttempts->error == 5) {
-                            emailPasswordReset($inputEmail, $db_id, $db_pass_code);
-                            $_SESSION['error'] = "Too many attempts! A password reset email has been sent!";
-                            header("location: ../index.php?loginModal=1");
-                            die();
-                        } else {
-                            $_SESSION['error'] = "An error has occurred! Contact us at: bla";
-                            header("location: ../index.php?loginModal=1");
-                            die();
-                        }
+                    $jAttempts = json_decode(checkAttempts($inputEmail));
+                    if ($jAttempts->error == 3) {
+                        addToAttempts($inputEmail);
+                        $_SESSION['error'] = "Too many attempts! Wait 5 minutes!";
+                        header("location: ../index.php?loginModal=1");
+                        die();
+                    } elseif ($jAttempts->error == 5) {
+                        emailPasswordReset($inputEmail, $db_id, $db_pass_code);
+                        $_SESSION['error'] = "Too many attempts! A password reset email has been sent!";
+                        header("location: ../index.php?loginModal=1");
+                        die();
+                    } else {
+                        $_SESSION['error'] = "An error has occurred! Contact us at: bla";
+                        header("location: ../index.php?loginModal=1");
+                        die();
                     }
-                } else {
-                    $_SESSION['error'] = "please confirm your email";
-                    header("location: ../index.php?loginModal=1");
-                    die();
                 }
             } else {
-                $_SESSION['error'] = "incorrect email or password";
+                $_SESSION['error'] = "please confirm your email";
                 header("location: ../index.php?loginModal=1");
                 die();
             }
@@ -80,12 +72,17 @@ if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
             header("location: ../index.php?loginModal=1");
             die();
         }
-
     } else {
-        $_SESSION['error'] = "email or password not set";
+        $_SESSION['error'] = "incorrect email or password";
         header("location: ../index.php?loginModal=1");
         die();
     }
+
+} else {
+    $_SESSION['error'] = "email or password not set";
+    header("location: ../index.php?loginModal=1");
+    die();
+}
 } else {
     $_SESSION['error'] = "email or password not set";
     header("location: ../index.php?loginModal=1");

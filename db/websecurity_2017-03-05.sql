@@ -96,7 +96,7 @@ DROP TABLE IF EXISTS `auth_tokens`;
 
 CREATE TABLE `auth_tokens` (
   `id` int(11) not null AUTO_INCREMENT,
-  `selector` char(12),
+  `selector` varchar(16),
   `token` char(64),
   `userid` int(11) UNSIGNED not null,
   `expires` int(12),
