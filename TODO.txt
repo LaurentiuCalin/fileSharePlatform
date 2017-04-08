@@ -19,11 +19,6 @@ in resetPasswordForm.php
 add a forgot password form to the login with email
 
 
-Check if reset password matches the previous password
-
-
-
-
 
 -> implement mysql_real_escape_string() for fields where sql injection is possible
 ->remember to use "fopen" or similar to open and display files for users
@@ -43,3 +38,8 @@ Check if reset password matches the previous password
 
 - hide urls of everything (deep linking)
 - multi-level login with regular and pro users
+
+
+->file upload
+->chat
+->

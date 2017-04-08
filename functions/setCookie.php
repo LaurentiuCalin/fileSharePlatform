@@ -30,6 +30,4 @@ function Cookie($id)
     $stmt->close();
 
     setcookie("aqInfo", $selector . "." . $token, $expires, '/', '');
-
-
 }

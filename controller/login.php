@@ -8,8 +8,8 @@ include_once '../functions/incrementLoginAttempts.php';
 include_once '../functions/sendEmail/sendEmailReset.php';
 include_once '../functions/setCookie.php';
 
+session_set_cookie_params(time()+600, "/", "", true, true);
 session_start();
-
 
 if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
     if (isset($_POST["PasswordLogin"]) && !empty($_POST["PasswordLogin"])) {

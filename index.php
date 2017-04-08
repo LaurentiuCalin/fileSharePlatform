@@ -256,6 +256,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
         </div>
     </div>
 </div>
+
 <div class="container intro">
     <div class="content">
         <div id="large-header" class="large-header">

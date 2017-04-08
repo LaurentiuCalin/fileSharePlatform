@@ -1,5 +1,6 @@
 <?php
 
+session_set_cookie_params(time() + 600, "/", "", true, true);
 session_start();
 
 include_once "db/dbconnect.php";
@@ -7,10 +8,11 @@ include_once "functions/checkLoginCookie.php";
 
 CheckLoginCookie();
 
-if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1){
+if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
     $_SESSION['error'] = "Please login to view this page";
     header("Location:index.php?loginModal=1");
 }
+
 
 ?>
 
@@ -56,11 +58,16 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1){
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="functions/logout.php">Logout</a>
+                    <a href="dashboard.php">Home</a>
                 </li>
-
+                <li>
+                    <a href="dashboard.php?settings">Settings</a>
+                </li>
                 <li>
                     <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="functions/logout.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -69,12 +76,21 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1){
     <!-- /.container -->
 </nav>
 
-<div class="container-fluid" style="margin-top: 50px;">
+<div id="main-content" class="container-fluid" style="margin-top: 50px;">
     cam asta-i
 </div>
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
+<?php
+if (isset($_GET['settings'])) {
+    ?>
+    <script type="text/javascript">
+        $("#main-content").load("settings.php");
+    </script>
+    <?php
+}
+?>
 </body>
 </html>

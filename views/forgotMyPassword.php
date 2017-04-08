@@ -1,5 +1,3 @@
-
-
 <?php
 session_start();
 
@@ -51,7 +49,9 @@ if (isset($_SESSION['error'])) {
                                 <div class="form-group">
                                     <div class="input-group">
                                         <label>Enter your email here</label>
-                                        <input id="inputEmail" type="text" name="email" placeholder="Enter your email here" class="form-control"  for="resetPassword" value="">
+                                        <input id="inputEmail" type="text" name="email"
+                                               placeholder="Enter your email here" class="form-control"
+                                               for="resetPassword" value="">
                                         <span class="" id="resetPasswordError"></span>
                                         <span class="" id="confirmResetPasswordError"></span>
                                     </div>

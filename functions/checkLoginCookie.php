@@ -8,6 +8,7 @@
 
 function CheckLoginCookie()
 {
+    include_once "setCookie.php";
     global $mysqli;
     if (isset($_COOKIE['aqInfo']) && !empty($_COOKIE['aqInfo'])) {
         $cookie = $_COOKIE['aqInfo'];
@@ -26,6 +27,14 @@ function CheckLoginCookie()
 
             $cookie_token = hash('sha256', $cookie_info_array[1]);
             if (hash_equals($db_token, $cookie_token)) {
+
+                $stmt = $mysqli->prepare("DELETE FROM auth_tokens WHERE selector = ?");
+                $stmt->bind_param("s", $selector);
+                $stmt->execute();
+                $stmt->close();
+
+                Cookie($db_userid);
+
                 $_SESSION['logged'] = 1;
                 $_SESSION['user'] = $db_userid;
                 return true;
