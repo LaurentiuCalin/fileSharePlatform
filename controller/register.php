@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include "../db/dbconnect.php";
 include "../functions/encryption.php";
 include "../functions/salt.php";
@@ -11,7 +11,9 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
     empty($_POST['email']) || empty($_POST['emailCheck']) ||
     empty(['password']) || empty($_POST['passwordCheck'])
 ) {
-    die("please fill all the fields");
+    $_SESSION['error'] = "Please fill all the fields";
+    header("Location:../index.php?registerModal=1");
+    die();
 } else {
 
     $sUserName = strtolower($_POST["username"]);
@@ -22,15 +24,25 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
     $sUserEmail = filter_var($sUserEmail, FILTER_SANITIZE_EMAIL);
 
     if ($sUserEmail !== $sUserEmailCheck) {
-        die("the emails don't match");
+        $_SESSION['error'] = "E-mails do not match! ";
+        header("Location:../index.php?registerModal=1");
+        die();
     } elseif ($sPassword !== $sPasswordCheck) {
-        die("the passwords don't match");
+        $_SESSION['error'] = "Passwords do not match!";
+        header("Location:../index.php?registerModal=1");
+        die();
     } elseif (!preg_match_all('$\S*(?=\S{10,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $sPassword)) {
-        die("the password doesn't meet the requirements");
+        $_SESSION['error'] = "The password does not meet the requirements";
+        header("Location:../index.php?registerModal=1");
+        die();
     } elseif (!preg_match_all('/(?=\S*[a-z])/', $sUserName)) {
-        die("username can contain only letters");
+        $_SESSION['error'] = "Username can contain only letters";
+        header("Location:../index.php?registerModal=1");
+        die();
     } elseif (filter_var($sUserEmail, FILTER_VALIDATE_EMAIL) === false) {
-        die("invalid email");
+        $_SESSION['error'] = "Invalid e-mail adress";
+        header("Location:../index.php?registerModal=1");
+        die();
     } else {
         $jEnc = json_decode(encrypt($sPasswordCheck, $sStaticSalt));
 
@@ -42,12 +54,13 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
         $sUserId = generateId($sUserEmail);
 
         if (addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $account_activation_code)) {
-
-            echo "added";
             emailConfirmation($sUserEmail, $account_activation_code);
+            header("Location:../index.php?messageModal=1");
 
         } else {
-            die("An error has occurred. Please try again");
+            $_SESSION['error'] = "An error has occurred. Please try again";
+            header("Location:../index.php?registerModal=1");
+            die();
         }
 
     }

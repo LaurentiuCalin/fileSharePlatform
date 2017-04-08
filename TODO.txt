@@ -19,20 +19,27 @@ in resetPasswordForm.php
 add a forgot password form to the login with email
 
 
-Check if reset password matches the previous password
-
-
-
-
 
 -> implement mysql_real_escape_string() for fields where sql injection is possible
 ->remember to use "fopen" or similar to open and display files for users
 ->disable allow_url_include for php in php.ini in order to block running files from remote servers
 ->disable eval()/shell_exec/exec/system
 ->set HTTPonly Cookies in php.ini
+->http://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html
+->http://php.net/manual/ro/session.security.php
 
 
 ->prevent folder navigation in the browser
 ->at least 2 user types on server
     -> registration w/ read/write only
     -> login w/ read only
+
+
+
+- hide urls of everything (deep linking)
+- multi-level login with regular and pro users
+
+
+->file upload
+->chat
+->

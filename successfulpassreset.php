@@ -14,12 +14,12 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="body-reset-password">
+<body>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default-success">
                 <div class="panel-body">
                     <h3><center><i class="fa fa-check-circle-o fa-4x "></i></center></h3>
                   <h5 class="text-center">

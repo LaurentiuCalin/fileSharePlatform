@@ -9,8 +9,8 @@ $passCode = htmlentities($passCode);
 $error = "";
 
 if (isset($_SESSION['error'])) {
-  $error = $_SESSION['error'];
-  unset($_SESSION['error']);
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
 }
 
 ?>
@@ -41,7 +41,7 @@ if (isset($_SESSION['error'])) {
                         <h2 class="text-center">Forgot your Password?</h2>
                         <p>You can reset it here. </p>
                         <p id="myError" style="color:red;">
-                          <?php echo $error; ?>
+                            <?php echo $error; ?>
                         </p>
                         <p class="resetpassword-error-message" id="resetpassword-error-message"><b>Password does not
                                 match!</b></p>

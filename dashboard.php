@@ -1,6 +1,18 @@
 <?php
 
+session_set_cookie_params(time() + 600, "/", "", true, true);
 session_start();
+
+include_once "db/dbconnect.php";
+include_once "functions/checkLoginCookie.php";
+
+CheckLoginCookie();
+
+if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
+    $_SESSION['error'] = "Please login to view this page";
+    header("Location:index.php?loginModal=1");
+}
+
 
 ?>
 
@@ -37,7 +49,7 @@ session_start();
         <div class="navbar-header">
             <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse"
                     type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+                        class="icon-bar"></span> <span class="icon-bar"></span></button>
             <a class="navbar-brand" href="#">Start Bootstrap</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,17 +58,16 @@ session_start();
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a data-target="#registerModal" data-toggle="modal" href="#">Register</a>
+                    <a href="dashboard.php">Home</a>
                 </li>
-
-
                 <li>
-                    <a data-target="#LoginModal" data-toggle="modal" href="#">Login</a>
+                    <a href="dashboard.php?settings">Settings</a>
                 </li>
-
-
                 <li>
                     <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="functions/logout.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -65,12 +76,21 @@ session_start();
     <!-- /.container -->
 </nav>
 
-<div class="container-fluid" style="margin-top: 50px;">
+<div id="main-content" class="container-fluid" style="margin-top: 50px;">
     cam asta-i
 </div>
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
+<?php
+if (isset($_GET['settings'])) {
+    ?>
+    <script type="text/javascript">
+        $("#main-content").load("settings.php");
+    </script>
+    <?php
+}
+?>
 </body>
 </html>
