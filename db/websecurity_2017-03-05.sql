@@ -27,31 +27,13 @@ DROP TABLE IF EXISTS `files`;
 
 CREATE TABLE `files` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
   `path_to_file` varchar(255) NOT NULL,
   `file_name` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL,
   `protected` tinyint(1) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-# Dump of table permissions
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `permissions`;
-
-CREATE TABLE `permissions` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) DEFAULT NULL,
-  `file_id` int(11) DEFAULT NULL,
-  `permission` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 
 # Dump of table users
@@ -82,7 +64,7 @@ DROP TABLE IF EXISTS `login_attempts`;
 
 CREATE TABLE `login_attempts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `last_attempt` DATETIME NOT NULL,
   `attempts` int(1) NOT NULL,
   PRIMARY KEY (`id`)
@@ -102,6 +84,9 @@ CREATE TABLE `auth_tokens` (
   `expires` int(12),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE auth_tokens ADD CONSTRAINT fk_auth_uid FOREIGN KEY (userid) REFERENCES users(id);
+ALTER TABLE files ADD CONSTRAINT fk_files_uid FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
