@@ -30,7 +30,7 @@ CREATE TABLE `files` (
   `user_id` int(11) UNSIGNED NOT NULL,
   `path_to_file` varchar(255) NOT NULL,
   `file_name` varchar(255) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
+  `created_at` datetime DEFAULT NOW(),
   `protected` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
