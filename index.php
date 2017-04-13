@@ -25,10 +25,12 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="" name="web-security">
     <meta content="" name="DanielLaurentiuOla">
+
 
     <title>Air Quick</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -101,10 +103,11 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Register</h5>
-                <p><?php echo $error; ?></p>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
                 </button>
+                <h5 class="modal-title">Register</h5>
+                <p><?php echo $error; ?></p>
+
             </div>
 
 
@@ -150,7 +153,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="password" name="password"
-                                   placeholder="Password" tabindex="1" type="password" value="Kotek31#!aaaa"><span
+                                   placeholder="Password" tabindex="1" type="password" value="Passw0rd!1"><span
                                     class=""
                                     id="passwordError"></span>
                         </div>
@@ -162,7 +165,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="passwordCheck" name="passwordCheck"
                                    placeholder="Repeat password" tabindex="1" type="password"
-                                   value="Kotek31#!aaaa"><span class=""
+                                   value="Passw0rd!1"><span class=""
                                                                id="passwordCheckError"></span>
                         </div>
                     </div>
@@ -196,10 +199,11 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <p><?php echo $error; ?></p>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
                 </button>
+                <h5 class="modal-title">Login</h5>
+                <p><?php echo $error; ?></p>
+
             </div>
 
 
@@ -251,6 +255,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
 
             <div class="modal-footer">
+                <a href="views/forgotMyPassword.php" class="pull-left">reset password</a>
                 <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
             </div>
         </div>

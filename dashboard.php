@@ -13,7 +13,6 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
     header("Location:index.php?loginModal=1");
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -91,6 +90,15 @@ if (isset($_GET['settings'])) {
     </script>
     <?php
 }
-?>
+
+if (isset($_GET['delete'])) {
+    ?>
+    <script type="text/javascript">
+        function showModal() {
+            $('#deleteModal').modal('show')
+        }
+       setTimeout(showModal, 1000);
+    </script>
+<?php } ?>
 </body>
 </html>

@@ -43,8 +43,7 @@ if (isset($_SESSION['error'])) {
                         <p id="myError" style="color:red;">
                             <?php echo $error; ?>
                         </p>
-                        <p class="resetpassword-error-message" id="resetpassword-error-message"><b>Password does not
-                                match!</b></p>
+                        <p class="resetpassword-error-message" id="resetpassword-error-message"><b>Password does not match!</b></p>
                         <div class="panel-body">
                             <form id="resetPasswordform"
                                   action="resetPassword.php?userId=<?php echo $userId; ?>&passCode=<?php echo $passCode; ?>"

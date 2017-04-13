@@ -42,4 +42,12 @@ add a forgot password form to the login with email
 
 ->file upload
 ->chat
-->
+
+The website should have at least the following features:
+• Multilevel login with backend authentication
+• CMS-like interface for user input
+• Facebook-like wall for user to user chats
+• File upload (images)
+
+
+"The solution is simple. Place all sensitive data outside of your web server’s document root. Many experts now advocate placing most, if not all, of your php code outside of your web server’s document root. Since PHP is not limited by the same restrictions are you web server, you can make a directory on the same level as your document root and place all of your sensitive data and code there."
