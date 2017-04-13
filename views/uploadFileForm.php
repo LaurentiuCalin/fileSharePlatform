@@ -3,12 +3,20 @@
 <?php
 session_start();
 
+//need to check if the user is logged in with SESSION
+//add protected checkbox for the file
 
 $error = "";
 
 if (isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
     unset($_SESSION['error']);
+}
+
+if (!isset($_SESSION['user'])){
+    die("please log in");
+}else{
+
 }
 
 ?>
