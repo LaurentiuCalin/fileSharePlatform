@@ -18,8 +18,7 @@ CheckLoginCookie();
 if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
     $_SESSION['error'] = "Please login to upload image";
     header("Location:../index.php?loginModal=1");
-}
-else {
+} else {
 
 
     if ($_FILES['fileToUpload'] && isset($_FILES['fileToUpload'])) {
@@ -38,6 +37,8 @@ else {
             $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
 
             $fileType = finfo_file($fileInfo, $_FILES['fileToUpload']['tmp_name']);
+
+            $fileSizeKb = filesize($fileTmpName);
 
             $fileIsOk = false;
 
@@ -83,18 +84,22 @@ else {
             if ($fileIsOk) {
 
                 include_once "../functions/userIdGenerator.php";
-                include_once "../functions/addFileInfoDatabase.php";
                 include "../db/dbconnect.php";
+                include_once "../functions/addFileInfoDatabase.php";
 
                 $fileNewName = generateRandomString();
                 $fileNewAddress = "C:/xampp/htdocs/ws/files/" . $fileNewName;
                 rename($fileTmpName, $fileNewAddress);
 
                 $userId = $_SESSION['user'];
-                addFileDatabase($fileName, $fileNewAddress, $userId);
 
-                header("Location: ../dashboard.php");
-                die("you know you're in the right place");
+                if (addFileDatabase($fileName, $fileNewAddress, $userId) && updateUserAvailableSpace($userId, $fileSizeKb)) {
+                    header("Location: ../dashboard.php");
+                    die("you know you're not in the right place");
+                } else {
+                    die("Something went wrong! Please try again!");
+                }
+
 
             }
 

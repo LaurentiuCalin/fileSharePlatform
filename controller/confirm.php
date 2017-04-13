@@ -3,7 +3,10 @@
 $account_activation_code = $_GET['et'];
 
 include_once '../db/dbconnect.php';
+
 global $mysqli;
+
+$defaultAvailableSpace = 161061273600;
 
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
@@ -17,8 +20,8 @@ if ($mysqli->connect_error) {
 
     if ($stmt->num_rows == 1) {
         if ($email_confirmation == 0) {
-            $stmtUpdate = $mysqli->prepare("UPDATE  users  SET email_confirmation = 1 WHERE account_activation_code = ?");
-            $stmtUpdate->bind_param('s', $account_activation_code);
+            $stmtUpdate = $mysqli->prepare("UPDATE  users  SET email_confirmation = 1, available_space = ? WHERE account_activation_code = ?");
+            $stmtUpdate->bind_param('ss',$defaultAvailableSpace, $account_activation_code);
             $stmtUpdate->execute();
             $stmtUpdate->close();
 
