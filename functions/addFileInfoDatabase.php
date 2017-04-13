@@ -33,9 +33,6 @@ function updateUserAvailableSpace($userId, $fileSize)
 
     global $mysqli;
 
-
-//    $fileSize = 1234;
-
     if ($mysqli->connect_error) {
         die("Connection failed: " . $mysqli->connect_error);
     } else {
@@ -43,7 +40,6 @@ function updateUserAvailableSpace($userId, $fileSize)
         $stmtUpdateSpace->bind_param("ss", $fileSize, $userId);
         if (!$stmtUpdateSpace->execute()) {
             die("Something went wrong, try again");
-            return false;
         }
         $stmtUpdateSpace->close();
         $mysqli->close();

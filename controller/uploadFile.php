@@ -107,7 +107,5 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
         die("Something went wrong! Please try again!");
     }
 }
-
-
 ?>
 
