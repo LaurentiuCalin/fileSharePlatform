@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: calin
- * Date: 08-Apr-17
- * Time: 5:22 PM
- */
 
 $error = "";
 
