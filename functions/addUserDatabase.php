@@ -13,7 +13,7 @@ function addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt,
         $stmtCheckEmail->store_result();
 
         if ($stmtCheckEmail->num_rows) {
-            $_SESSION['error'] = "This e-mail already exist in the database!( we are not using the database ;) )";
+            $_SESSION['error'] = "This e-mail already exist in the database!";
             header("Location:../index.php?registerModal=1");
             die();
         } else {

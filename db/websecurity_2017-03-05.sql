@@ -65,6 +65,7 @@ DROP TABLE IF EXISTS `login_attempts`;
 CREATE TABLE `login_attempts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
+  `userid` int(11) UNSIGNED NOT NULL,
   `last_attempt` DATETIME NOT NULL,
   `attempts` int(1) NOT NULL,
   PRIMARY KEY (`id`)
@@ -85,8 +86,9 @@ CREATE TABLE `auth_tokens` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE auth_tokens ADD CONSTRAINT fk_auth_uid FOREIGN KEY (userid) REFERENCES users(id);
-ALTER TABLE files ADD CONSTRAINT fk_files_uid FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE auth_tokens ADD CONSTRAINT fk_auth_uid FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE ;
+ALTER TABLE files ADD CONSTRAINT fk_files_uid FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
+ALTER TABLE login_attempts ADD CONSTRAINT fk_attempts_uid FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE;
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
