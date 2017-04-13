@@ -5,6 +5,7 @@ session_start();
 
 include_once "db/dbconnect.php";
 include_once "functions/checkLoginCookie.php";
+include_once "views/fileDisplay.php";
 
 CheckLoginCookie();
 
@@ -12,6 +13,7 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
     $_SESSION['error'] = "Please login to view this page";
     header("Location:index.php?loginModal=1");
 }
+
 
 ?>
 
@@ -57,10 +59,10 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="views/uploadFileForm.php">Upload</a>
+                    <a href="dashboard.php">Home</a>
                 </li>
                 <li>
-                    <a href="dashboard.php">Home</a>
+                    <a href="views/uploadFileForm.php">Upload</a>
                 </li>
                 <li>
                     <a href="dashboard.php?settings">Settings</a>
@@ -79,7 +81,26 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
 </nav>
 
 <div id="main-content" class="container-fluid" style="margin-top: 50px;">
-    cam asta-i
+    <div class="container">
+        <h2>Your files</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>file name</th>
+                    <th>uploaded at</th>
+                    <th>size</th>
+                    <th>download link</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                fileDisplay($_SESSION['user']);
+                ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <script src="js/jquery.js" type="text/javascript"></script>

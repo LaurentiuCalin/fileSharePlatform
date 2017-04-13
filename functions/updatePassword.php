@@ -15,13 +15,10 @@ function updatePassword($userId, $passCode, $newPass)
         $stmtCheckIdAndCode->bind_param('ii', $userId, $passCode);
         $stmtCheckIdAndCode->execute();
         $stmtCheckIdAndCode->store_result();
-        $stmtCheckIdAndCode->bind_result($oldPass, $oldSalt);
+        $stmtCheckIdAndCode->bind_result($db_password, $db_password_salt);
 
         if ($stmtCheckIdAndCode->fetch()) {
-
-            $newPassWOldSalt = encryptGivenRandSalt($newPass, $sStaticSalt, $oldSalt);
-
-            if ($oldPass != $newPassWOldSalt) {
+            if (!password_verify($sStaticSalt . $newPass . $db_password_salt, $db_password)) {
 
                 $nullPassCode = NULL;
 
@@ -38,10 +35,11 @@ function updatePassword($userId, $passCode, $newPass)
                 die("Please don't use a password you used before");
             }
         } else {
-            die("Something went wrong, please try again!");
-        }
+    die("Something went wrong, please try again!");
+}
     }
-    return true;
+
+return true;
 }
 
 

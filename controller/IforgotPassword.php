@@ -32,13 +32,14 @@ if (isset($_POST['email']) && $_POST['email']) {
                 $resetCode = rand(99999, 999999);
 
 //            send the email to the user
-                include_once ('../functions/sendEmail/sendEmailReset.php');
-                emailPasswordReset($email,$userId, $resetCode);
+                include_once('../functions/sendEmail/sendEmailReset.php');
 
                 $stmt = $mysqli->prepare("UPDATE users SET password_reset_code=? WHERE email=? AND id=?");
-                $stmt->bind_param('isi', $resetCode, $email, $userId);
+                $stmt->bind_param('sss', $resetCode, $email, $userId);
                 $stmt->execute();
                 $stmt->store_result();
+
+                emailPasswordReset($email, $userId, $resetCode);
 
                 $_SESSION['error'] = "An email is on your way! You can reset your password using the link we sent you!";
                 header('Location: ../views/forgotMyPassword.php');

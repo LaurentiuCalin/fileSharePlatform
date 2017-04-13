@@ -91,21 +91,18 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
                 $fileNewAddress = "C:/xampp/htdocs/ws/files/" . $fileNewName;
                 rename($fileTmpName, $fileNewAddress);
 
+                $fileDownloadAddress = "files/" . $fileNewName;
+
                 $userId = $_SESSION['user'];
 
-                if (addFileDatabase($fileName, $fileNewAddress, $userId) && updateUserAvailableSpace($userId, $fileSizeKb)) {
+                if (addFileDatabase($fileName, $fileDownloadAddress, $userId) && updateUserAvailableSpace($userId, $fileSizeKb)) {
                     header("Location: ../dashboard.php");
                     die("you know you're not in the right place");
                 } else {
                     die("Something went wrong! Please try again!");
                 }
-
-
             }
-
-
         }
-
     } else {
         die("Something went wrong! Please try again!");
     }
