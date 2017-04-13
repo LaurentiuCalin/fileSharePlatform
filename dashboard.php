@@ -100,7 +100,7 @@ if (isset($_GET['delete'])) {
         function showModal() {
             $('#deleteModal').modal('show')
         }
-       setTimeout(showModal, 1000);
+        setTimeout(showModal, 200);
     </script>
 <?php } ?>
 </body>
