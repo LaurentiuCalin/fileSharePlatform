@@ -31,7 +31,7 @@ else {
 
         } else {
 
-            $fileName = $_FILES['fileToUpload']['name'];
+            $fileName = htmlentities($_FILES['fileToUpload']['name']);
 
             $fileTmpName = $_FILES['fileToUpload']['tmp_name'];
 

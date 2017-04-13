@@ -1,6 +1,8 @@
 
 
 <?php
+
+session_set_cookie_params(time() + 600, "/", "", true, true);
 session_start();
 
 //need to check if the user is logged in with SESSION
@@ -13,10 +15,15 @@ if (isset($_SESSION['error'])) {
     unset($_SESSION['error']);
 }
 
-if (!isset($_SESSION['user'])){
-    die("please log in");
-}else{
 
+include_once "../db/dbconnect.php";
+include_once "../functions/checkLoginCookie.php";
+
+CheckLoginCookie();
+
+if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
+    $_SESSION['error'] = "Please login to view this page";
+    header("Location:../index.php?loginModal=1");
 }
 
 ?>
