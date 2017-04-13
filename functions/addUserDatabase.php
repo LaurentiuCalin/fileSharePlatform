@@ -1,5 +1,5 @@
 <?php
-function addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $account_activation_code)
+function addUserToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $account_activation_code)
 {
 
     global $mysqli;

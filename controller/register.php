@@ -16,7 +16,7 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
     die();
 } else {
 
-    $sUserName = strtolower($_POST["username"]);
+    $sUserName = strtolower(htmlentities($_POST["username"]));
     $sUserEmail = strtolower($_POST["email"]);
     $sUserEmailCheck = strtolower($_POST["emailCheck"]);
     $sPassword = $_POST["password"];
@@ -53,7 +53,7 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
 //        generate the id for the password reset
         $sUserId = generateId($sUserEmail);
 
-        if (addToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $account_activation_code)) {
+        if (addUserToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandSalt, $account_activation_code)) {
             emailConfirmation($sUserEmail, $account_activation_code);
             header("Location:../index.php?messageModal=1");
 

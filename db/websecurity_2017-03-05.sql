@@ -50,7 +50,8 @@ CREATE TABLE `users` (
   `password_salt` varchar(256) NOT NULL,
   `email_confirmation` TINYINT(1) DEFAULT FALSE,
   `account_activation_code` VARCHAR(65) NOT NULL,
-  `pro_user` TINYINT(1) DEFAULT FALSE,
+  `pro_user` TINYINT(1) DEFAULT 0,
+  `available_space` BIGINT NOT NULL,
   `created_at` datetime DEFAULT NOW(),
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
