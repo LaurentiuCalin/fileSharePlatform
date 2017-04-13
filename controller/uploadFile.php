@@ -93,14 +93,16 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
 
                 $userId = $_SESSION['user'];
 
-                if (addFileDatabase($fileName, $fileNewAddress, $userId) && updateUserAvailableSpace($userId, $fileSizeKb)) {
-                    header("Location: ../dashboard.php");
-                    die("you know you're not in the right place");
-                } else {
-                    die("Something went wrong! Please try again!");
+                if (checkAvailableSpace($userId, $fileSizeKb)){
+                    if (addFileDatabase($fileName, $fileNewAddress, $userId) && updateUserAvailableSpace($userId, $fileSizeKb)) {
+                        header("Location: ../dashboard.php");
+                        die("you know you're not in the right place");
+                    } else {
+                        die("Something went wrong! Please try again!");
+                    }
+                }else{
+                    die("Please upgrade your account for more disk space!");
                 }
-
-
             }
 
 

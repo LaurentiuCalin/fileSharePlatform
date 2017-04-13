@@ -20,13 +20,41 @@ function addFileDatabase($fileName, $fileNewAddress, $userId)
             return false;
         }
         $stmtAddFileDetails->close();
-//        $mysqli->close();
         return true;
 
     }
 
 
 }
+
+function checkAvailableSpace($userId, $fileSize){
+
+    global $mysqli;
+
+    if ($mysqli->connect_error) {
+        die("Connection failed: " . $mysqli->connect_error);
+    } else {
+        $stmtCheckSpace = $mysqli->prepare("SELECT available_space FROM users WHERE id = ?");
+        $stmtCheckSpace->bind_param("s", $userId);
+        if (!$stmtCheckSpace->execute()) {
+            die("Something went wrong, try again");
+            return false;
+        }
+        $stmtCheckSpace->store_result();
+        $stmtCheckSpace->bind_result($availableSpace);
+        $stmtCheckSpace->fetch();
+        $stmtCheckSpace->close();
+    }
+
+    if ($fileSize <= $availableSpace){
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+
 
 function updateUserAvailableSpace($userId, $fileSize)
 {
@@ -46,7 +74,6 @@ function updateUserAvailableSpace($userId, $fileSize)
             return false;
         }
         $stmtUpdateSpace->close();
-        $mysqli->close();
         return true;
 
     }
