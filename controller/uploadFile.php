@@ -93,7 +93,8 @@ else {
                 $userId = $_SESSION['user'];
                 addFileDatabase($fileName, $fileNewAddress, $userId);
 
-                echo $_SESSION['user'];
+                header("Location: ../dashboard.php");
+                die("you know you're in the right place");
 
             }
 
