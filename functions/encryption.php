@@ -9,11 +9,11 @@ function encrypt($sPassword, $sStaticSalt){
     return '{"hashPass":"'.$sHashPass.'", "randSalt":"'.$sRandSalt.'"}';
 }
 
-function encryptGivenRandSalt($sPassword, $sStaticSalt, $sRandSalt){
-    $sHashPass = password_hash($sStaticSalt.$sPassword.$sRandSalt, PASSWORD_BCRYPT );
-
-    return $sHashPass;
-}
+//function encryptGivenRandSalt($sPassword, $sStaticSalt, $sRandSalt){
+//    $sHashPass = password_hash($sStaticSalt.$sPassword.$sRandSalt, PASSWORD_BCRYPT );
+//
+//    return $sHashPass;
+//}
 
 
 // not necessary. use password_verify instead

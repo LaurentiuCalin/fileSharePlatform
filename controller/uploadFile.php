@@ -90,8 +90,10 @@ else {
                 $fileNewAddress = "C:/xampp/htdocs/ws/files/" . $fileNewName;
                 rename($fileTmpName, $fileNewAddress);
 
+                $fileDownloadAddress="files/".$fileNewName;
+
                 $userId = $_SESSION['user'];
-                addFileDatabase($fileName, $fileNewAddress, $userId);
+                addFileDatabase($fileName, $fileDownloadAddress, $userId);
 
                 header("Location: ../dashboard.php");
                 die("you know you're in the right place");
