@@ -57,6 +57,9 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
+                    <a href="views/uploadFileForm.php">Upload</a>
+                </li>
+                <li>
                     <a href="dashboard.php">Home</a>
                 </li>
                 <li>
