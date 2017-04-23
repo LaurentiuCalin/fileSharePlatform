@@ -1,16 +1,29 @@
+
+
 <?php
+
+session_set_cookie_params(time() + 600, "/", "", true, true);
 session_start();
 
-$userId = $_GET['userId'];
-$passCode = $_GET['code'];
+//need to check if the user is logged in with SESSION
+//add protected checkbox for the file
 
-$userId = htmlentities($userId);
-$passCode = htmlentities($passCode);
 $error = "";
 
 if (isset($_SESSION['error'])) {
     $error = $_SESSION['error'];
     unset($_SESSION['error']);
+}
+
+
+include_once "../db/dbconnect.php";
+include_once "../functions/checkLoginCookie.php";
+
+CheckLoginCookie();
+
+if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
+    $_SESSION['error'] = "Please login to view this page";
+    header("Location:../index.php?loginModal=1");
 }
 
 ?>
@@ -37,37 +50,35 @@ if (isset($_SESSION['error'])) {
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="text-center">
-                        <h3><i class="fa fa-lock fa-4x"></i></h3>
-                        <h2 class="text-center">Forgot your Password?</h2>
-                        <p>You can reset it here. </p>
+                        <h3><i class="fa fa-cloud-upload fa-4x"></i></h3>
+                        <h2 class="text-center">Upload file here</h2>
                         <p id="myError" style="color:red;">
                             <?php echo $error; ?>
                         </p>
-                        <p class="resetpassword-error-message" id="resetpassword-error-message"><b>Password does not match!</b></p>
+                        <p class="resetpassword-error-message" id="resetpassword-error-message"><b>Password does not
+                                match!</b></p>
                         <div class="panel-body">
                             <form id="resetPasswordform"
-                                  action="resetPassword.php?userId=<?php echo $userId; ?>&passCode=<?php echo $passCode; ?>"
-                                  role="form" autocomplete="off" class="form" method="post"
-                                  onsubmit="return CheckResetPasswordForm(this);">
+                                  action="../controller/uploadFile.php"
+                                  role="form" autocomplete="off" class="form" method="post" enctype="multipart/form-data">
+<!--                                  onsubmit="return (this);">-->
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input id="resetPassword" type="password" name="newPassword"
-                                               placeholder="New password" class="form-control" onpaste="return false"
-                                               autocomplete="off" for="resetPassword" value="">
+                                        <label>Please select or drag your file here</label>
+                                        <input id="inputEmail" type="file" name="fileToUpload" class="form-control" value="">
                                         <span class="" id="resetPasswordError"></span>
-                                        <input id="confirmResetPassword" type="password" name="confirmNewPassword"
-                                               placeholder="Confirm your new password" class="form-control"
-                                               onpaste="return false" autocomplete="off" for="confirmResetPassword"
-                                               value="">
                                         <span class="" id="confirmResetPasswordError"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input id="btn-new-password" name="recover-submit"
-                                           class="btn btn-lg btn-primary btn-block" value="Reset Password"
+                                    <input id="btn-new-password" name="submit"
+                                           class="btn btn-lg btn-primary btn-block" value="Upload file"
                                            type="submit">
                                 </div>
                             </form>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -80,3 +91,4 @@ if (isset($_SESSION['error'])) {
 </body>
 
 </html>
+

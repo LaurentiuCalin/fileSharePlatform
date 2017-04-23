@@ -33,23 +33,23 @@ if (isset($_GET['userId']) && $_GET['userId'] &&
                 header("Location:../successfulpassreset.php");
                 die();
             } else {
-              $_SESSION['error'] = "Something went wrong! Please try again";
-              header("Location: resetPasswordForm.php?userId=".$userId."&code=".$passCode."");
+                $_SESSION['error'] = "Something went wrong! Please try again";
+                header("Location: resetPasswordForm.php?userId=" . $userId . "&code=" . $passCode . "");
                 die();
             }
         } else {
-          $_SESSION['error'] = "Confirmation password does not match";
-          header("Location: resetPasswordForm.php?userId=".$userId."&code=".$passCode."");
+            $_SESSION['error'] = "Confirmation password does not match";
+            header("Location: resetPasswordForm.php?userId=" . $userId . "&code=" . $passCode . "");
             die();
         }
     } else {
-      $_SESSION['error'] = "The password doesn't meet the requirements";
-      header("Location: resetPasswordForm.php?userId=".$userId."&code=".$passCode."");
+        $_SESSION['error'] = "The password doesn't meet the requirements";
+        header("Location: resetPasswordForm.php?userId=" . $userId . "&code=" . $passCode . "");
         die();
     }
 } else {
-  $_SESSION['error'] = "Both fields are required!";
-  header("Location: resetPasswordForm.php?userId=".$_GET['userId']."&code=".$_GET['passCode']."");
+    $_SESSION['error'] = "Both fields are required!";
+    header("Location: resetPasswordForm.php?userId=" . $_GET['userId'] . "&code=" . $_GET['passCode'] . "");
     die();
 }
 

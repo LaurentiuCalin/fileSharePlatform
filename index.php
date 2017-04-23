@@ -2,9 +2,18 @@
 
 session_start();
 
+include_once "db/dbconnect.php";
+include_once "functions/checkLoginCookie.php";
+
+CheckLoginCookie();
+
+if (isset($_SESSION['logged']) || $_SESSION['logged'] == 1){
+    header("Location:dashboard.php");
+}
+
 $error = '';
 
-if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
+if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
     $error = $_SESSION['error'];
     unset($_SESSION['error']);
 }
@@ -16,10 +25,12 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="" name="web-security">
     <meta content="" name="DanielLaurentiuOla">
+
 
     <title>Air Quick</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +43,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
     <![endif]-->
 </head>
 
-<body>
+<body class="landing-page">
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -69,15 +80,34 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
     <!-- /.container -->
 </nav>
 
+
+<div id="messageModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <b>Successfully Registered! In order to log in, activate your account by using the link sent to your
+                    e-mail.</b>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
 <!-- register modal -->
 <div aria-hidden="true" aria-labelledby="registerModalLabel" class="modal fade" id="registerModal" role="dialog"
      tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Register</h5>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
                 </button>
+                <h5 class="modal-title">Register</h5>
+                <p><?php echo $error; ?></p>
+
             </div>
 
 
@@ -123,8 +153,9 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="password" name="password"
-                                   placeholder="Password" tabindex="1" type="password" value=""><span class=""
-                                                                                                      id="passwordError"></span>
+                                   placeholder="Password" tabindex="1" type="password" value="Passw0rd!1"><span
+                                    class=""
+                                    id="passwordError"></span>
                         </div>
                     </div>
                     <!-- required="" minlength="10" oncopy="return false" onpaste="return false"-->
@@ -133,15 +164,17 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="passwordCheck" name="passwordCheck"
-                                   placeholder="Repeat password" tabindex="1" type="password" value=""><span class=""
-                                                                                                             id="passwordCheckError"></span>
+                                   placeholder="Repeat password" tabindex="1" type="password"
+                                   value="Passw0rd!1"><span class=""
+                                                               id="passwordCheckError"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">
-                                <input class="form-control btn btn-register btn-success" id="register-submit" name="register-submit"
+                                <input class="form-control btn btn-register btn-success" id="register-submit"
+                                       name="register-submit"
                                        tabindex="4" type="submit" value="Register Now">
                             </div>
                         </div>
@@ -166,10 +199,11 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <p><?php echo $error; ?></p>
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
                 </button>
+                <h5 class="modal-title">Login</h5>
+                <p><?php echo $error; ?></p>
+
             </div>
 
 
@@ -193,7 +227,8 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
                         <div class="col-sm-8">
                             <input autocomplete="off" class="form-control" id="PasswordLogin" maxlength="256"
-                                   name="PasswordLogin"                                   placeholder="Password" required="" tabindex="1" type="password" value=""> <span
+                                   name="PasswordLogin" placeholder="Password" required="" tabindex="1" type="password"
+                                   value=""> <span
                                     class="" id="confirmResetPasswordError"></span>
                         </div>
                     </div>
@@ -209,7 +244,8 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">
-                                <input class="form-control btn btn-login btn-success" id="login-submit" name="login-submit"
+                                <input class="form-control btn btn-login btn-success" id="login-submit"
+                                       name="login-submit"
                                        tabindex="4" type="submit" value="Login">
                             </div>
                         </div>
@@ -219,25 +255,29 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 
 
             <div class="modal-footer">
+                <a href="views/forgotMyPassword.php" class="pull-left">reset password</a>
                 <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
             </div>
         </div>
     </div>
 </div>
+
 <div class="container intro">
-  <div class="content">
-    <div id="large-header" class="large-header">
-      <canvas id="demo-canvas"></canvas>
-      <h1 class="main-title">Air-Quick </h1>
+    <div class="content">
+        <div id="large-header" class="large-header">
+            <canvas id="demo-canvas"></canvas>
+            <h1 class="main-title">Air-Quick </h1>
+        </div>
     </div>
+</div>
 <footer>
-           <div class="row">
-               <div class="col-lg-12">
-                   <p class="text-center">Copyright &copy; Air-Quick 2017</p>
-               </div>
-           </div>
-           <!-- /.row -->
-       </footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="text-center">Copyright &copy; Air-Quick 2017</p>
+        </div>
+    </div>
+    <!-- /.row -->
+</footer>
 
 </section>
 
@@ -249,10 +289,22 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])){
 <script src="js/rAF.js"></script>
 <script src="js/bg.js"></script>
 <?php
-if (isset($_GET['loginModal']) && $_GET['loginModal'] == 1){ ?>
-    <script type = 'text/javascript'>
+if (isset($_GET['loginModal']) && $_GET['loginModal'] == 1) { ?>
+    <script type='text/javascript'>
         $("#LoginModal").modal('show');
     </script>
+<?php }
+
+if (isset($_GET['registerModal']) && $_GET['registerModal'] == 1) { ?>
+    <script type='text/javascript'>
+        $("#registerModal").modal('show');
+    </script>
+<?php }
+if (isset($_GET['messageModal']) && $_GET['messageModal'] == 1) { ?>
+    <script type='text/javascript'>
+        $("#messageModal").modal('show');
+    </script>
+
 <?php } ?>
 </body>
 </html>

@@ -1,6 +1,19 @@
 <?php
 
+session_set_cookie_params(time() + 600, "/", "", true, true);
 session_start();
+
+include_once "db/dbconnect.php";
+include_once "functions/checkLoginCookie.php";
+include_once "views/fileDisplay.php";
+
+CheckLoginCookie();
+
+if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
+    $_SESSION['error'] = "Please login to view this page";
+    header("Location:index.php?loginModal=1");
+}
+
 
 ?>
 
@@ -37,7 +50,7 @@ session_start();
         <div class="navbar-header">
             <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse"
                     type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+                        class="icon-bar"></span> <span class="icon-bar"></span></button>
             <a class="navbar-brand" href="#">Start Bootstrap</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,17 +59,19 @@ session_start();
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a data-target="#registerModal" data-toggle="modal" href="#">Register</a>
+                    <a href="dashboard.php">Home</a>
                 </li>
-
-
                 <li>
-                    <a data-target="#LoginModal" data-toggle="modal" href="#">Login</a>
+                    <a href="views/uploadFileForm.php">Upload</a>
                 </li>
-
-
+                <li>
+                    <a href="dashboard.php?settings">Settings</a>
+                </li>
                 <li>
                     <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="functions/logout.php">Logout</a>
                 </li>
             </ul>
         </div>
@@ -65,12 +80,80 @@ session_start();
     <!-- /.container -->
 </nav>
 
-<div class="container-fluid" style="margin-top: 50px;">
-    cam asta-i
+<div id="main-content" class="container-fluid" style="margin-top: 50px;">
+    <div class="container">
+        <h2>Your files</h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>file name</th>
+                    <th>uploaded at</th>
+                    <th>options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                fileDisplay($_SESSION['user']);
+                ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- delete file confirm modal -->
+
+<div aria-hidden="true" aria-labelledby="confirmFileDelete" class="modal fade" id="confirmFileDeleteModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title">Delete file </h2>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to delete the file?</p>
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal" type="button" onclick="window.location='controller/deleteFile.php?deleteFile=<?php echo $_GET['deleteFile'];?>'">Yes</button>
+                <button class="btn btn-success" data-dismiss="modal" type="button" onclick="window.location='dashboard.php';">No</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
+<?php
+if (isset($_GET['settings'])) {
+    ?>
+    <script type="text/javascript">
+        $("#main-content").load("settings.php");
+    </script>
+    <?php
+}
+
+if (isset($_GET['delete'])) {
+    ?>
+    <script type="text/javascript">
+        function showModal() {
+            $('#deleteModal').modal('show')
+        }
+        setTimeout(showModal, 200);
+    </script>
+<?php }
+
+if (isset($_GET['deleteFile'])) {
+    ?>
+    <script type="text/javascript">
+        $('#confirmFileDeleteModal').modal('show');
+    </script>
+<?php } ?>
 </body>
 </html>

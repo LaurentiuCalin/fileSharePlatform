@@ -4,13 +4,6 @@
 
 Daniel
 
-create a file after we create a nice structure
-generate reset code once the forgot pass is clicked and save it in the database
-
-in resetPassword.php
-we need to add some password validation when the user is resetting it
-
-updatePassword check password match with old random salt
 
 
 Ola
@@ -19,17 +12,14 @@ in resetPasswordForm.php
 add a forgot password form to the login with email
 
 
-Check if reset password matches the previous password
-
-
-
-
 
 -> implement mysql_real_escape_string() for fields where sql injection is possible
 ->remember to use "fopen" or similar to open and display files for users
 ->disable allow_url_include for php in php.ini in order to block running files from remote servers
 ->disable eval()/shell_exec/exec/system
 ->set HTTPonly Cookies in php.ini
+->http://www.cyberciti.biz/tips/php-security-best-practices-tutorial.html
+->http://php.net/manual/ro/session.security.php
 
 
 ->prevent folder navigation in the browser
@@ -41,3 +31,16 @@ Check if reset password matches the previous password
 
 - hide urls of everything (deep linking)
 - multi-level login with regular and pro users
+
+
+->file upload
+->chat
+
+The website should have at least the following features:
+• Multilevel login with backend authentication
+• CMS-like interface for user input
+• Facebook-like wall for user to user chats
+• File upload (images)
+
+
+"The solution is simple. Place all sensitive data outside of your web server’s document root. Many experts now advocate placing most, if not all, of your php code outside of your web server’s document root. Since PHP is not limited by the same restrictions are you web server, you can make a directory on the same level as your document root and place all of your sensitive data and code there."

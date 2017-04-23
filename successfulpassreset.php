@@ -14,19 +14,19 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="body-reset-password">
+<body>
 
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
+            <div class="panel panel-default-success">
                 <div class="panel-body">
                     <h3><center><i class="fa fa-check-circle-o fa-4x "></i></center></h3>
                   <h5 class="text-center">
                     <b>Password was successfully changed!</b>
                   </h5>
                   <h6 class="text-center">
-                    <p><a href="index.php">Now try to log in with your new password</a></p>
+                    <p><a href="index.php?loginModal=1">Now try to log in with your new password</a></p>
 
                   </h6>
                 </div>
