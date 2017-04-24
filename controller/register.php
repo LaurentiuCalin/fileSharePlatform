@@ -4,8 +4,8 @@ include "../db/dbconnect.php";
 include "../functions/encryption.php";
 include "../functions/salt.php";
 include "../functions/addUserDatabase.php";
-include '../functions/sendEmail/SendEmailConfirmation.php';
-include '../functions/userIdGenerator.php';
+include "../functions/sendEmail/SendEmailConfirmation.php";
+include "../functions/userIdGenerator.php";
 
 if (empty($_POST['username']) || empty($_POST['email']) ||
     empty($_POST['email']) || empty($_POST['emailCheck']) ||
@@ -40,7 +40,7 @@ if (empty($_POST['username']) || empty($_POST['email']) ||
         header("Location:../index.php?registerModal=1");
         die();
     } elseif (filter_var($sUserEmail, FILTER_VALIDATE_EMAIL) === false) {
-        $_SESSION['error'] = "Invalid e-mail adress";
+        $_SESSION['error'] = "Invalid e-mail address";
         header("Location:../index.php?registerModal=1");
         die();
     } else {
