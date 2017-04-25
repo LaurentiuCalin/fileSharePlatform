@@ -121,3 +121,52 @@ else if(form.resetPassword.value !== form.confirmResetPassword.value){
     $("#confirmResetPassword").val("");
 
   });
+  //jQuery to collapse the navbar on scroll
+  $(window).scroll(function() {
+      if ($(".navbar").offset().top > 700) {
+          $(".navbar-fixed-top").addClass("top-nav-collapse");
+      } else {
+          $(".navbar-fixed-top").removeClass("top-nav-collapse");
+      }
+  });
+
+  $(window).scroll(function(){
+
+    var $theWindowSize = $(this).width();
+
+    if ($(this).scrollTop() > 700) {
+        $('.navbar-brand').show();
+    } else if ($theWindowSize < 768){
+        $('.navbar-brand').show();
+    } else {
+      $('.navbar-brand').hide();
+
+    }
+
+});
+
+
+var fooReveal = {
+            delay: 300,
+            distance: '300px',
+            origin: 'left',
+
+        };
+
+        window.sr = ScrollReveal();
+        sr.reveal('#one', fooReveal);
+        sr.reveal('#two', {
+          delay: 600,
+      });
+      sr.reveal('#three', {
+        delay: 900,
+    });
+    sr.reveal('#four', {
+      delay: 1200,
+  });
+  sr.reveal('#five', {
+    delay: 1500,
+});
+sr.reveal('#six', {
+  delay: 1800,
+});

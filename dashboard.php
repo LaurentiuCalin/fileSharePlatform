@@ -38,7 +38,7 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
     <![endif]-->
 </head>
 
-<body>
+<body class="dashboard">
 <!-- Navigation -->
 
 
