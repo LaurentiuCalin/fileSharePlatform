@@ -5,7 +5,7 @@ function addUserToDatabase($sUserId, $sUserName, $sUserEmail, $sPassEnc, $sRandS
     global $mysqli;
 
     if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
+        die("Connection faileda: " . $mysqli->connect_error);
     } else {
         $stmtCheckEmail = $mysqli->prepare("SELECT id FROM users WHERE email = ?");
         $stmtCheckEmail->bind_param('s', $sUserEmail);
