@@ -170,3 +170,22 @@ var fooReveal = {
 sr.reveal('#six', {
   delay: 1800,
 });
+
+
+
+// copy link to clipboard
+
+// function copytoClipboard(object) {
+//
+//     var fileCode = $(object).data('code');
+//
+//     var link = "http://localhost:90/ws/sharedFile.php?x="+fileCode;
+//
+//
+//     document.execCommand("copy");
+// }
+
+// $(document).on('click', '#copyLink', function() {
+//     console.log("asdjkds");
+// });
+
