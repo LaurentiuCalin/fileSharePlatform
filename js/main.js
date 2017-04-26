@@ -1,4 +1,3 @@
-
 $("#resetpassword-error-message").hide();
 
 function CheckRegistrationForm(form) {
@@ -86,33 +85,33 @@ function CheckLoginForm(form) {
 
 
 function CheckResetPasswordForm(form) {
-  if(form.resetPassword.value == ""){
-    $("#resetPassword").parent().addClass('has-error');
-    $("#resetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
-    form.resetPassword.focus();
-    return false;
-  }
-  if(form.confirmResetPassword.value == ""){
-    $("#confirmResetPassword").parent().addClass('has-error');
-    $("#confirmResetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
-    form.confirmResetPassword.focus();
-    return false;
-  }
-else if(form.resetPassword.value !== form.confirmResetPassword.value){
-  $("#resetpassword-error-message").show();
-  $("#resetPassword").parent().addClass('has-error');
-  $("#resetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
-  form.resetPassword.focus();
-  $("#confirmResetPassword").parent().addClass('has-error');
-  $("#confirmResetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
-  form.confirmResetPassword.focus();
-  return false;
-}
+    if (form.resetPassword.value == "") {
+        $("#resetPassword").parent().addClass('has-error');
+        $("#resetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+        form.resetPassword.focus();
+        return false;
+    }
+    if (form.confirmResetPassword.value == "") {
+        $("#confirmResetPassword").parent().addClass('has-error');
+        $("#confirmResetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+        form.confirmResetPassword.focus();
+        return false;
+    }
+    else if (form.resetPassword.value !== form.confirmResetPassword.value) {
+        $("#resetpassword-error-message").show();
+        $("#resetPassword").parent().addClass('has-error');
+        $("#resetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+        form.resetPassword.focus();
+        $("#confirmResetPassword").parent().addClass('has-error');
+        $("#confirmResetPasswordError").addClass('glyphicon glyphicon-remove form-control-feedback');
+        form.confirmResetPassword.focus();
+        return false;
+    }
 
 
 }
 
-  $("#resetPassword").click(function(){
+$("#resetPassword").click(function () {
     $("#resetpassword-error-message").hide();
     $("#resetPassword").parent().removeClass('has-error');
     $("#confirmResetPassword").parent().removeClass('has-error');
@@ -120,26 +119,26 @@ else if(form.resetPassword.value !== form.confirmResetPassword.value){
     $("#resetPassword").val("");
     $("#confirmResetPassword").val("");
 
-  });
-  //jQuery to collapse the navbar on scroll
-  $(window).scroll(function() {
-      if ($(".navbar").offset().top > 700) {
-          $(".navbar-fixed-top").addClass("top-nav-collapse");
-      } else {
-          $(".navbar-fixed-top").removeClass("top-nav-collapse");
-      }
-  });
+});
+//jQuery to collapse the navbar on scroll
+$(window).scroll(function () {
+    if ($(".navbar").offset().top > 700) {
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
+    } else {
+        $(".navbar-fixed-top").removeClass("top-nav-collapse");
+    }
+});
 
-  $(window).scroll(function(){
+$(window).scroll(function () {
 
     var $theWindowSize = $(this).width();
 
     if ($(this).scrollTop() > 700) {
         $('.navbar-brand').show();
-    } else if ($theWindowSize < 768){
+    } else if ($theWindowSize < 768) {
         $('.navbar-brand').show();
     } else {
-      $('.navbar-brand').hide();
+        $('.navbar-brand').hide();
 
     }
 
@@ -147,45 +146,27 @@ else if(form.resetPassword.value !== form.confirmResetPassword.value){
 
 
 var fooReveal = {
-            delay: 300,
-            distance: '300px',
-            origin: 'left',
+    delay: 300,
+    distance: '300px',
+    origin: 'left',
 
-        };
+};
 
-        window.sr = ScrollReveal();
-        sr.reveal('#one', fooReveal);
-        sr.reveal('#two', {
-          delay: 600,
-      });
-      sr.reveal('#three', {
-        delay: 900,
-    });
-    sr.reveal('#four', {
-      delay: 1200,
-  });
-  sr.reveal('#five', {
+window.sr = ScrollReveal();
+sr.reveal('#one', fooReveal);
+sr.reveal('#two', {
+    delay: 600,
+});
+sr.reveal('#three', {
+    delay: 900,
+});
+sr.reveal('#four', {
+    delay: 1200,
+});
+sr.reveal('#five', {
     delay: 1500,
 });
 sr.reveal('#six', {
-  delay: 1800,
+    delay: 1800,
 });
-
-
-
-// copy link to clipboard
-
-// function copytoClipboard(object) {
-//
-//     var fileCode = $(object).data('code');
-//
-//     var link = "http://localhost:90/ws/sharedFile.php?x="+fileCode;
-//
-//
-//     document.execCommand("copy");
-// }
-
-// $(document).on('click', '#copyLink', function() {
-//     console.log("asdjkds");
-// });
 

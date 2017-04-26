@@ -209,6 +209,10 @@ p, .intro-section p, .about-section p {
     text-align: center;
 }
 
+.shareable-link{
+    cursor: pointer;
+}
+
 @-webkit-keyframes bounce {
     0, 20%, 60%, 100% {
         -webkit-transform: translateY(0);

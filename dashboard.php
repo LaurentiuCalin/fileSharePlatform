@@ -130,6 +130,25 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    $(".shareable-link").click(function () {
+        var link = $(this).data("link");
+//        create input to store the link in
+        var dummy = document.createElement("input");
+//        add the input to the body
+        document.body.appendChild(dummy);
+//        set an attribute
+        dummy.setAttribute("id", "dummy_id");
+//        set the value of the attribute to the link
+        document.getElementById("dummy_id").value=link;
+//        select the created link
+        dummy.select();
+//        copy the link to the clipboard
+        document.execCommand('copy');
+//        remove the element from the body
+        document.body.removeChild(dummy);
+    });
+</script>
 <?php
 if (isset($_GET['settings'])) {
     ?>
