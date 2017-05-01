@@ -58,6 +58,21 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+# Dump of table comments
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `comments`;
+
+CREATE TABLE `comments` (
+  `id` int(11) unsigned NOT NULL,
+  `body` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NOW(),
+  `updated_at` datetime DEFAULT NULL,
+  `userid` int(11) UNSIGNED not null,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 # Dump of table login_attempts
 # ------------------------------------------------------------
 
@@ -90,6 +105,7 @@ CREATE TABLE `auth_tokens` (
 ALTER TABLE auth_tokens ADD CONSTRAINT fk_auth_uid FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE ;
 ALTER TABLE files ADD CONSTRAINT fk_files_uid FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 ALTER TABLE login_attempts ADD CONSTRAINT fk_attempts_uid FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE;
+ALTER TABLE comments ADD CONSTRAINT fk_comments_uid FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE;
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
