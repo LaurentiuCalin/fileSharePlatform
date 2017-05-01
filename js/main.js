@@ -152,21 +152,25 @@ var fooReveal = {
 
 };
 
-window.sr = ScrollReveal();
-sr.reveal('#one', fooReveal);
-sr.reveal('#two', {
-    delay: 600,
-});
-sr.reveal('#three', {
-    delay: 900,
-});
-sr.reveal('#four', {
-    delay: 1200,
-});
-sr.reveal('#five', {
-    delay: 1500,
-});
-sr.reveal('#six', {
-    delay: 1800,
-});
+// window.sr = ScrollReveal();
+// sr.reveal('#one', fooReveal);
+// sr.reveal('#two', {
+//     delay: 600,
+// });
+// sr.reveal('#three', {
+//     delay: 900,
+// });
+// sr.reveal('#four', {
+//     delay: 1200,
+// });
+// sr.reveal('#five', {
+//     delay: 1500,
+// });
+// sr.reveal('#six', {
+//     delay: 1800,
+// });
 
+$(document).on("click", ".comments_link", function () {
+   var fileCode = $(this).data("filecode");
+   $("#comment-form").attr('action', 'controller/addComment.php?fileCode='+fileCode+'');
+});

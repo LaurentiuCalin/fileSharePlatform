@@ -127,6 +127,43 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
     </div>
 </div>
 
+<!--comment modal-->
+
+<div aria-hidden="true" aria-labelledby="CommentModalLabel" class="modal fade" id="CommentModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title">Comments</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="comment-form" method="post"
+                      name="comment-form" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="comment_textbox">Comment*</label>
+
+                        <div class="col-sm-12">
+                            <input class="form-control" id="comment_textbox" maxlength="255" name="comment"
+                                   placeholder="Comment" required tabindex="1" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input class="form-control btn btn-login btn-success" id="comment-submit"
+                                       name="comment-submit" tabindex="4" type="submit" value="Add">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js"></script>
