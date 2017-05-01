@@ -1,7 +1,5 @@
 <?php
 
-//check if user exists
-//make sure you get protected value  from the form. DANIEL, TO DO
 
 
 function addFileDatabase($fileName, $fileNewAddress, $userId)
