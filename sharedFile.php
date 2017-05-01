@@ -12,6 +12,13 @@ CheckLoginCookie();
 
 
 
+$error = '';
+
+if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +53,7 @@ CheckLoginCookie();
         <div class="navbar-header">
             <button class="navbar-toggle" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse"
                     type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+                        class="icon-bar"></span> <span class="icon-bar"></span></button>
             <a class="navbar-brand" href="#">Start Bootstrap</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,8 +64,7 @@ CheckLoginCookie();
 
                 <?php
                 if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
-
-
+                    $userCanComment = "";
                     echo "<li>
                     <a href=\"index.php?loginModal=1\">Login</a>
                 </li>
@@ -66,7 +72,9 @@ CheckLoginCookie();
                     <a href=\"index.php?registerModal=1\">Register</a>
                 </li>";
 
-                }else{
+                } else {
+                    $userCanComment = "| <a data-target='#CommentModal' data-toggle='modal' href='#'>Add Comment</a>";
+
                     echo "<li>
                     <a href=\"dashboard.php\">Home</a>
                 </li>
@@ -90,28 +98,11 @@ CheckLoginCookie();
     </div>
     <!-- /.container -->
 </nav>
-
-<?php
-
-$fileInfo = '';
-
-if (isset($_GET['x']) && $_GET['x']){
-
-    $fileCode = $_GET['x'];
-
-    if (strlen($fileCode) <= 35 && strlen($fileCode) > 0){
-
-        include_once 'functions/getFileInfo.php';
-        include_once 'db/dbconnect.php';
-        $fileInfo = json_decode(getFileInfo($fileCode));
-
-
-
-        echo "<div id=\"main-content\" class=\"container-fluid\" style=\"margin-top: 50px;\">
-    <div class=\"container\">
+<div id="main-content" class="container-fluid" style="margin-top: 50px;">
+    <div class="container">
         <h2>Your files</h2>
-        <div class=\"table-responsive\">
-            <table class=\"table table-striped\">
+        <div class="table-responsive">
+            <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>file name</th>
@@ -121,25 +112,83 @@ if (isset($_GET['x']) && $_GET['x']){
                 </thead>
                 <tbody>
                 <?php
-                <tr><td>$fileInfo->fileName</td><td>$fileInfo->createdAt</td>
-                <td><a href='files/$fileCode' download='$fileInfo->fileName'>Download</a></td></tr>
+
+                $fileInfo = '';
+
+                if (isset($_GET['x']) && $_GET['x']) {
+
+                    $fileCode = $_GET['x'];
+
+                    if (strlen($fileCode) <= 35 && strlen($fileCode) > 0) {
+
+                        include_once 'functions/getFileInfo.php';
+                        include_once 'db/dbconnect.php';
+                        $fileInfo = json_decode(getFileInfo($fileCode));
+
+
+                        echo "<tr><td>$fileInfo->fileName</td><td>$fileInfo->createdAt</td>
+                <td><a href='files/$fileCode' download='$fileInfo->fileName'>Download</a> $userCanComment</td></tr>";
+
+                    } else {
+                        die("Link invalid!");
+                    }
+                } else {
+                    die("Link not valid!");
+                }
+                ?>
                 </tbody>
             </table>
         </div>
     </div>
-</div>";
+</div>
 
-    }else{
-        die("Link invalid!");
-        exit();
-    }
+<!--comment modal-->
 
-}else{
-    die("Link not valid!");
-    exit();
-}
+<div aria-hidden="true" aria-labelledby="CommentModalLabel" class="modal fade" id="CommentModal" role="dialog"
+     tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title">Add comment</h5>
+                <p>
+                    <?php echo $error; ?>
+                </p>
+
+            </div>
 
 
-?>
+            <div class="modal-body">
+                <form action="controller/addComment.php?fileCode=<?php echo $fileCode; ?>" class="form-horizontal" id="comment-form" method="post"
+                      name="comment-form" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-12 control-label" for="comment_textbox">Comment*</label>
+
+                        <div class="col-sm-12">
+                            <input class="form-control" id="comment_textbox" maxlength="255" name="comment"
+                                   placeholder="Comment" required tabindex="1" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input class="form-control btn btn-login btn-success" id="comment-submit"
+                                       name="comment-submit" tabindex="4" type="submit" value="Add">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+<script src="js/main.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js"></script>
 
 </body>
+</html>

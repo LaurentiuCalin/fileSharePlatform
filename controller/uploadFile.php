@@ -88,7 +88,7 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
                 include_once "../functions/addFileInfoDatabase.php";
 
                 $fileNewName = generateRandomString();
-                $fileNewAddress = "C:/xampp/htdocs/ws/files/" . $fileNewName;
+                $fileNewAddress = "../files/" . $fileNewName;
                 rename($fileTmpName, $fileNewAddress);
 
                 $fileDownloadAddress = "files/".$fileNewName;
