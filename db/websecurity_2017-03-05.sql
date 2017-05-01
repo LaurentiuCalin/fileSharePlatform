@@ -64,11 +64,11 @@ CREATE TABLE `users` (
 DROP TABLE IF EXISTS `comments`;
 
 CREATE TABLE `comments` (
-  `id` int(11) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `body` varchar(255) NOT NULL,
   `created_at` datetime DEFAULT NOW(),
-  `updated_at` datetime DEFAULT NULL,
   `userid` int(11) UNSIGNED not null,
+  `fileid` int(11) UNSIGNED not null,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -106,6 +106,7 @@ ALTER TABLE auth_tokens ADD CONSTRAINT fk_auth_uid FOREIGN KEY (userid) REFERENC
 ALTER TABLE files ADD CONSTRAINT fk_files_uid FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 ALTER TABLE login_attempts ADD CONSTRAINT fk_attempts_uid FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE;
 ALTER TABLE comments ADD CONSTRAINT fk_comments_uid FOREIGN KEY (userid) REFERENCES users(id) ON DELETE CASCADE;
+ALTER TABLE comments ADD CONSTRAINT fk_comments_fid FOREIGN KEY (fileid) REFERENCES files(id) ON DELETE CASCADE;
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
