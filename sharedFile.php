@@ -73,7 +73,8 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
                 </li>";
 
                 } else {
-                    $userCanComment = "| <a data-target='#CommentModal' data-toggle='modal' href='#'>Add Comment</a>";
+
+                    $userCanComment = "| <a data-target='#CommentModal' data-toggle='modal' href='#' class='comments_link' data-filecode='".$_GET['x']."'>Comments</a>";
 
                     echo "<li>
                     <a href=\"dashboard.php\">Home</a>
@@ -151,7 +152,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
             <div class="modal-header">
                 <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title">Add comment</h5>
+                <h5 class="modal-title">Comments</h5>
                 <p>
                     <?php echo $error; ?>
                 </p>
@@ -160,6 +161,9 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
 
             <div class="modal-body">
+                <div class="container comments-container">
+                </div>
+
                 <form action="controller/addComment.php?fileCode=<?php echo $fileCode; ?>" class="form-horizontal" id="comment-form" method="post"
                       name="comment-form" role="form">
                     <div class="form-group">

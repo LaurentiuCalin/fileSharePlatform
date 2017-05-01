@@ -139,6 +139,8 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
                 <h5 class="modal-title">Comments</h5>
             </div>
             <div class="modal-body">
+                <div class="container comments-container">
+                </div>
                 <form class="form-horizontal" id="comment-form" method="post"
                       name="comment-form" role="form">
                     <div class="form-group">

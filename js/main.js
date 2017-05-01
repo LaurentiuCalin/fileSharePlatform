@@ -171,6 +171,50 @@ var fooReveal = {
 // });
 
 $(document).on("click", ".comments_link", function () {
-   var fileCode = $(this).data("filecode");
-   $("#comment-form").attr('action', 'controller/addComment.php?fileCode='+fileCode+'');
+   var linkFileCode = $(this).data("filecode");
+   $("#comment-form").attr('action', 'controller/addComment.php?fileCode='+linkFileCode+'');
+
+   $.ajax({
+       "url":"controller/getComments.php",
+       "method":"POST",
+       "cache":"false",
+       "data":{fileCode:linkFileCode}
+   }).done(function (comments) {
+
+       var jComments = JSON.parse(comments);
+
+       // console.log(jComments);
+
+       var container = $('.comments-container');
+       container = container.html("");
+
+       var commentTemplate = ' <div class="row comment-container">\
+           <div class="username">\
+           <b>{{username}}</b>\
+           </div>\
+           <div class="date container">\
+           <i>{{date}}</i>\
+       </div>\
+       <div class="comment-container">\
+           <span>{{body}}</span>\
+       </div>\
+       </div>';
+
+       for(var i = 0; i < jComments.length; i++){
+
+           var comment = JSON.parse(jComments[i]);
+
+           // console.log(c.username);
+
+           template = commentTemplate.replace("{{username}}", comment.username).replace("{{date}}", comment.commentDate).replace("{{body}}", comment.commentBody);
+           // template += commentTemplate.replace("{{date}}", comment.commentDate);
+           // template += commentTemplate.replace("{{body}}", comment.commentBody);
+
+           container.append(template);
+       }
+       
+   })
+
+
 });
+

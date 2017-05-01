@@ -9,8 +9,8 @@ function getCommentsUsername($fileId){
         $stmt = $mysqli->prepare("SELECT comments.created_at, comments.body, users.username FROM comments, users WHERE comments.fileid = ? AND comments.userid = users.id");
 
         $stmt->bind_param('s', $fileId);
-        if ($stmt->execute()){
-            die("something went wrong, try again");
+        if (!$stmt->execute()){
+            die("something went wrong, try again !!!");
         }
         $stmt->store_result();
         $stmt->bind_result($commentDate, $commentBody, $user);
