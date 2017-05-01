@@ -10,7 +10,6 @@ function getFileInfo($code){
     }else{
 
         $lookFor = '%'.$code;
-        $fileName = "asd";
 
         $stmtFileInfo = $mysqli->prepare("SELECT id, file_name, created_at FROM files WHERE path_to_file LIKE ?");
         $stmtFileInfo->bind_param('s', $lookFor);
