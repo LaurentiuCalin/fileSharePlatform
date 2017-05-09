@@ -11,11 +11,11 @@ function updatePassword($userId, $passCode, $newPass)
         die("Connection failed: " . $mysqli->connect_error);
     } else {
 //        checking if there is an userid associated with the resetCode
-        $stmtCheckIdAndCode = $mysqli->prepare("SELECT password, password_salt FROM users WHERE id = ? AND password_reset_code = ?");
+        $stmtCheckIdAndCode = $mysqli->prepare("SELECT email, password, password_salt FROM users WHERE id = ? AND password_reset_code = ?");
         $stmtCheckIdAndCode->bind_param('ii', $userId, $passCode);
         $stmtCheckIdAndCode->execute();
         $stmtCheckIdAndCode->store_result();
-        $stmtCheckIdAndCode->bind_result($db_password, $db_password_salt);
+        $stmtCheckIdAndCode->bind_result($email, $db_password, $db_password_salt);
 
         if ($stmtCheckIdAndCode->fetch()) {
             if (!password_verify($sStaticSalt . $newPass . $db_password_salt, $db_password)) {
@@ -31,6 +31,10 @@ function updatePassword($userId, $passCode, $newPass)
                 $stmtChangePass->bind_param('sisi', $newPassEnc, $nullPassCode, $sNewRandSalt, $userId);
                 $stmtChangePass->execute();
                 $stmtChangePass->store_result();
+
+                include_once 'deleteAttempts.php';
+                deleteAttempts($email);
+
             } else {
                 die("Please don't use a password you used before");
             }

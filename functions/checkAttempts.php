@@ -14,12 +14,8 @@ function checkAttempts($email)
         $stmt->close();
         if ($attempts < 5) {
             if ((time() - strtotime($last_attempt)) > 300) {
-                $stmtDeleteAttempts = $mysqli->prepare("DELETE FROM login_attempts WHERE email = ?");
-                $stmtDeleteAttempts->bind_param("s", $email);
-                $stmtDeleteAttempts->execute();
-                $stmtDeleteAttempts->close();
-                // some time passed since the last attempt
-                return true;
+                include_once 'deleteAttempts.php';
+                deleteAttempts($email);
             } else {
                 if ($attempts < 3) {
                     return true;

@@ -35,6 +35,9 @@ if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
                             $_SESSION['logged'] = 1;
                             $_SESSION['user'] = $db_id;
 
+                            include_once '../functions/deleteAttempts.php';
+                            deleteAttempts($inputEmail);
+
                             header("location: ../dashboard.php");
                             die();
 
@@ -52,7 +55,9 @@ if (isset($_POST['emailLogin']) && !empty($_POST['emailLogin'])) {
                         header("location: ../index.php?loginModal=1");
                         die();
                     } elseif ($jAttempts->error == 5) {
-                        emailPasswordReset($inputEmail, $db_id, $db_pass_code);
+                        include_once '../functions/addPassCodeandEmailit.php';
+                        addPassCodeandEmailIt($inputEmail, $db_id);
+//                        emailPasswordReset($inputEmail, $db_id, $db_pass_code);
                         $_SESSION['error'] = "Too many attempts! A password reset email has been sent!";
                         header("location: ../index.php?loginModal=1");
                         die();
