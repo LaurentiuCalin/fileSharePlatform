@@ -178,7 +178,6 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
                         </ul>
                     </div>
 
-
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3">

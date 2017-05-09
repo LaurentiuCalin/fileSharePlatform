@@ -26,7 +26,7 @@
                     <b>Password was successfully changed!</b>
                   </h5>
                   <h6 class="text-center">
-                    <p><a href="index.php?loginModal=1">Now try to log in with your new password</a></p>
+                    <p><a href="http://188.226.141.170/functions/logout.php">Now try to log in with your new password</a></p>
 
                   </h6>
                 </div>
