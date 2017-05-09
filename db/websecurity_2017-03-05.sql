@@ -51,7 +51,7 @@ CREATE TABLE `users` (
   `email_confirmation` TINYINT(1) DEFAULT FALSE,
   `account_activation_code` VARCHAR(65) NOT NULL,
   `pro_user` TINYINT(1) DEFAULT 0,
-  `available_space` BIGINT NOT NULL,
+  `available_space` BIGINT DEFAULT 0,
   `created_at` datetime DEFAULT NOW(),
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
