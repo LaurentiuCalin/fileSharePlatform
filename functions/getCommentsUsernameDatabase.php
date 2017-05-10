@@ -33,16 +33,4 @@ function getCommentsUsername($fileId){
     }
 
 }
-
-//[
-//    {"username": "Daniel",
-//        "comment":"askdjnsa"
-//        "date":"askdjnsa"
-//    },
-//    {"username": "Daniel",
-//        "comment":"askdjnsa"
-//        "date":"askdjnsa"
-//    }
-//]
-
 ?>

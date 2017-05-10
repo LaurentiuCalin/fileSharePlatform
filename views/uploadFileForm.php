@@ -5,9 +5,6 @@
 session_set_cookie_params(time() + 600, "/", "", true, true);
 session_start();
 
-//need to check if the user is logged in with SESSION
-//add protected checkbox for the file
-
 $error = "";
 
 if (isset($_SESSION['error'])) {

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: calin
- * Date: 06-Apr-17
- * Time: 10:57 AM
- */
 
 function Cookie($id)
 {

@@ -1,8 +1,6 @@
 <?php
 
 session_start();
-//echo $_GET['userId']."<br> ". $_GET['passcode']  ."<br>".$_POST['newpassword'];
-//here we check the fields and add the new password in the database
 
 
 //check if we get the userid, code to reset the pass and the passwords

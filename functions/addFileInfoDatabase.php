@@ -36,7 +36,6 @@ function checkAvailableSpace($userId, $fileSize){
         $stmtCheckSpace->bind_param("s", $userId);
         if (!$stmtCheckSpace->execute()) {
             die("Something went wrong, try again");
-            return false;
         }
         $stmtCheckSpace->store_result();
         $stmtCheckSpace->bind_result($availableSpace);

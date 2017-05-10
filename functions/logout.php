@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: calin
- * Date: 07-Apr-17
- * Time: 2:06 PM
- */
 
 if (isset($_COOKIE['aqInfo']) && !empty($_COOKIE['aqInfo'])) {
     include_once "../db/dbconnect.php";

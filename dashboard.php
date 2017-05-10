@@ -30,12 +30,11 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
     <title>Air Quick</title><!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 </head>
 
 <body class="dashboard">
@@ -120,8 +119,13 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
 
 
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-dismiss="modal" type="button" onclick="window.location='controller/deleteFile.php?deleteFile=<?php echo $_GET['deleteFile'];?>'">Yes</button>
-                <button class="btn btn-success" data-dismiss="modal" type="button" onclick="window.location='dashboard.php';">No</button>
+                <button class="btn btn-secondary" data-dismiss="modal" type="button"
+                        onclick="window.location='controller/deleteFile.php?deleteFile=<?php echo $_GET['deleteFile']; ?>'">
+                    Yes
+                </button>
+                <button class="btn btn-success" data-dismiss="modal" type="button"
+                        onclick="window.location='dashboard.php';">No
+                </button>
             </div>
         </div>
     </div>
@@ -179,13 +183,18 @@ if (!isset($_SESSION['logged']) || $_SESSION['logged'] != 1) {
 //        set an attribute
         dummy.setAttribute("id", "dummy_id");
 //        set the value of the attribute to the link
-        document.getElementById("dummy_id").value=link;
+        document.getElementById("dummy_id").value = link;
 //        select the created link
         dummy.select();
 //        copy the link to the clipboard
         document.execCommand('copy');
 //        remove the element from the body
         document.body.removeChild(dummy);
+        swal(
+            'Link copied',
+            '',
+            'success'
+        )
     });
 </script>
 <?php

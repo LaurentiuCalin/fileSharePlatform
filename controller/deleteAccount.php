@@ -7,6 +7,7 @@ include_once '../functions/salt.php';
 session_set_cookie_params(time() + 600, "/", "", true, true);
 session_start();
 
+
 if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
     if (isset($_POST['EmailDelete']) && !empty($_POST['EmailDelete'])) {
         if (isset($_POST['PasswordDelete']) && !empty($_POST['PasswordDelete'])) {
@@ -30,6 +31,12 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
                             $stmt->bind_param("s", $inputEmail);
                             $stmt->execute();
                             $stmt->close();
+
+                            $stmt = $mysqli->prepare("DELETE FROM files WHERE user_id = ?");
+                            $stmt->bind_param("s", $db_id);
+                            $stmt->execute();
+                            $stmt->close();
+
                             header("location: ../functions/logout.php");
                         } else {
                             $_SESSION['error'] = "incorrect email or password";

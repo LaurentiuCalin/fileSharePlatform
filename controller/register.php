@@ -7,10 +7,7 @@ include "../functions/addUserDatabase.php";
 include "../functions/sendEmail/SendEmailConfirmation.php";
 include "../functions/userIdGenerator.php";
 
-if (empty($_POST['username']) || empty($_POST['email']) ||
-    empty($_POST['email']) || empty($_POST['emailCheck']) ||
-    empty(['password']) || empty($_POST['passwordCheck'])
-) {
+if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['emailCheck']) || empty($_POST['password']) || empty($_POST['passwordCheck'])) {
     $_SESSION['error'] = "Please fill all the fields";
     header("Location:../index.php?registerModal=1");
     die();
