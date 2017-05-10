@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: calin
- * Date: 07-Apr-17
- * Time: 2:51 PM
- */
-
 function CheckLoginCookie()
 {
     include_once "setCookie.php";
