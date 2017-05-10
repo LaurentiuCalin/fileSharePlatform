@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $error = "";
 
 if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {

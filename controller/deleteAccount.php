@@ -15,13 +15,18 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
             $inputEmail = filter_var($inputEmail, FILTER_SANITIZE_EMAIL);
             if (!filter_var($inputEmail, FILTER_VALIDATE_EMAIL) === false) {
                 global $mysqli;
-                $stmt = $mysqli->prepare("SELECT id, password, password_salt FROM users WHERE email = ?");
+                $stmt = $mysqli->prepare("SELECT users.id, users.password, users.password_salt, files.path_to_file FROM users, files WHERE email = ? AND users.id = files.user_id");
                 $stmt->bind_param('s', $inputEmail);
                 $stmt->execute();
                 $stmt->store_result();
-                $stmt->bind_result($db_id, $db_password, $db_password_salt);
+                $stmt->bind_result($db_id, $db_password, $db_password_salt, $db_path_to_file);
+                $user_files = array();
+                while ($stmt->fetch()) {
+                    $server_file_name = explode("/", $db_path_to_file);
+                    array_push($user_files, $server_file_name[1]);
+                }
                 $stmt->fetch();
-                if ($stmt->num_rows == 1) {
+                if ($stmt->num_rows >= 1) {
                     $stmt->close();
                     $session_uid = $_SESSION['user'];
                     if ($session_uid == $db_id) {
@@ -32,10 +37,9 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] == 1) {
                             $stmt->execute();
                             $stmt->close();
 
-                            $stmt = $mysqli->prepare("DELETE FROM files WHERE user_id = ?");
-                            $stmt->bind_param("s", $db_id);
-                            $stmt->execute();
-                            $stmt->close();
+                            foreach ($user_files as $file_name) {
+                                unlink("../files/" . $file_name);
+                            }
 
                             header("location: ../functions/logout.php");
                         } else {
