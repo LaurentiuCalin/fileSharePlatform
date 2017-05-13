@@ -116,9 +116,8 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="username" maxlength="30" minlength="4"
-                                   name="username" oncopy="return false" onpaste="return false" placeholder="Username"
-                                   required="" tabindex="1" type="text" value=""> <span class=""
-                                                                                        id="usernameError"></span>
+                                   name="username" placeholder="Username"
+                                   required tabindex="1" type="text">
                         </div>
                     </div>
 
@@ -128,20 +127,16 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="email" maxlength="256" name="email"
-                                   placeholder="E-mail" tabindex="1" type="email" required minlength="10"
-                                   oncopy="return false" onpaste="return false"><span class=""
-                                                                                      id="emailError"></span>
+                                   placeholder="E-mail" tabindex="1" type="email" required minlength="10">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-12 control-label" for="emailCheck">Repeat e-mail *</label>
-
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="emailCheck" maxlength="256"
                                    name="emailCheck" placeholder="Repeat e-mail" tabindex="1" type="email" required
-                                   minlength="10" oncopy="return false" onpaste="return false"><span class=""
-                                                                                                     id="emailCheckError"></span>
+                                   minlength="10">
                         </div>
                     </div>
 
@@ -151,8 +146,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="password" name="password"
                                    placeholder="Password" tabindex="1" type="password" required minlength="10"
-                                   oncopy="return false" onpaste="return false"><span class=""
-                                                                                      id="passwordError"></span>
+                            >
                         </div>
                     </div>
                     <div class="form-group">
@@ -161,8 +155,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="passwordCheck" name="passwordCheck"
                                    placeholder="Repeat password" tabindex="1" type="password" required minlength="10"
-                                   oncopy="return false" onpaste="return false"><span class=""
-                                                                                      id="passwordCheckError"></span>
+                            >
                         </div>
                     </div>
 
@@ -223,8 +216,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="emailLogin" maxlength="256"
                                    name="emailLogin" oncopy="return false" onpaste="return false" placeholder="Email"
-                                   required="" tabindex="1" type="email" value="">
-                            <span class="" id="emailLoginError"></span>
+                                   required tabindex="1" type="email">
                         </div>
                     </div>
 
@@ -234,8 +226,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="PasswordLogin" maxlength="256"
-                                   name="PasswordLogin" placeholder="Password" required="" tabindex="1" type="password"
-                                   value=""> <span class="" id="confirmResetPasswordError"></span>
+                                   name="PasswordLogin" placeholder="Password" required tabindex="1" type="password">
                         </div>
                     </div>
                     <div class="form-group">
