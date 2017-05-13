@@ -145,7 +145,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="password" name="password"
-                                   placeholder="Password" tabindex="1" type="password" required minlength="10"
+                                   placeholder="Password" tabindex="1" type="password" required minlength="10" maxlength="62"
                             >
                         </div>
                     </div>
@@ -154,7 +154,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
 
                         <div class="col-sm-12">
                             <input autocomplete="off" class="form-control" id="passwordCheck" name="passwordCheck"
-                                   placeholder="Repeat password" tabindex="1" type="password" required minlength="10"
+                                   placeholder="Repeat password" tabindex="1" type="password" required minlength="10" maxlength="62"
                             >
                         </div>
                     </div>
@@ -225,7 +225,7 @@ if (isset($_SESSION['error']) && !empty($_SESSION['error'])) {
                         <label class="col-sm-12 control-label" for="PasswordLogin">Password *</label>
 
                         <div class="col-sm-12">
-                            <input autocomplete="off" class="form-control" id="PasswordLogin" maxlength="256"
+                            <input autocomplete="off" class="form-control" id="PasswordLogin" maxlength="62"
                                    name="PasswordLogin" placeholder="Password" required tabindex="1" type="password">
                         </div>
                     </div>

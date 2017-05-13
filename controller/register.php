@@ -28,7 +28,7 @@ if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['emailCh
         $_SESSION['error'] = "Passwords do not match!";
         header("Location:../index.php?registerModal=1");
         die();
-    } elseif (!preg_match_all('$\S*(?=\S{10,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $sPassword)) {
+    } elseif (!preg_match_all('$\S*(?=\S{10,62})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$', $sPassword)) {
         $_SESSION['error'] = "The password does not meet the requirements";
         header("Location:../index.php?registerModal=1");
         die();
