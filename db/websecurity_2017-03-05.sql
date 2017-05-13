@@ -46,7 +46,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `password_reset_code` INT(6),
+  `password_reset_code` VARCHAR(64),
   `password_salt` varchar(256) NOT NULL,
   `email_confirmation` TINYINT(1) DEFAULT FALSE,
   `account_activation_code` VARCHAR(65) NOT NULL,

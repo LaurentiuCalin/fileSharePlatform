@@ -11,8 +11,11 @@ function updatePassword($userId, $passCode, $newPass)
         die("Connection failed: " . $mysqli->connect_error);
     } else {
 //        checking if there is an userid associated with the resetCode
+
+        $hash_code = hash('sha256', $passCode);
+
         $stmtCheckIdAndCode = $mysqli->prepare("SELECT email, password, password_salt FROM users WHERE id = ? AND password_reset_code = ?");
-        $stmtCheckIdAndCode->bind_param('ii', $userId, $passCode);
+        $stmtCheckIdAndCode->bind_param('ii', $userId, $hash_code);
         $stmtCheckIdAndCode->execute();
         $stmtCheckIdAndCode->store_result();
         $stmtCheckIdAndCode->bind_result($email, $db_password, $db_password_salt);
